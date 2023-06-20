@@ -1,0 +1,8 @@
+git
+github-cli
+neovim
+zsh
+zsh-theme-powerlevel10k-git
+zsh-autosuggestion-git
+zsh-syntax-highlight-git
+

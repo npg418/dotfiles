@@ -1,0 +1,3 @@
+for f in `ls ~/dotfiles/rc/*`; do
+    source "${f}"
+done

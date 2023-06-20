@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = master
+[user]
+	name = NPG418
+	email = narupenguin919@gmail.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
