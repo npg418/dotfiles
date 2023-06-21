@@ -1,15 +1,24 @@
 #!/bin/env bash
 
-ln -sf ~/dotfiles/.rc ~/.rc
+cd `dirname $0`
+dot_dir=$(pwd)
+
+ln -sf $dot_dir/.rc ~
 
 if [[ $SHELL = */zsh ]]; then
-    ln -sf ~/dotfiles/zsh/.zshrc ~/
-elif [ -e ~/.zshrc ]; then
-    rm ~/.zshrc
+    ln -sf $dot_dir/.zshrc ~
+    ln -sf $dot_dir/.p10k.zsh ~
+else
+    if [ -e ~/.zshrc ]; then
+        rm ~/.zshrc
+    fi
+    if [ -e ~/.p10k.zsh ]; then
+	rm ~/.p10k.zsh
+    fi
 fi
 
 if [ -x "$(command -v git)" ]; then
-    ln -sf ~/dotfiles/git/.gitconfig ~/
+    ln -sf $dot_dir/.gitconfig ~
 elif [ -e ~/.gitconfig ]; then
     rm ~/.gitconfig
 fi

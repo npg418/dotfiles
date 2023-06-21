@@ -1,3 +1,13 @@
-for f in `ls ~/dotfiles/rc/*`; do
+source="$0"
+
+while [ -h "$source" ]; do
+  dir="$( cd -P "$( dirname "$source" )" >/dev/null 2>&1 && pwd )"
+  source="$(readlink "$source")"
+  [[ $source != /* ]] && source="$dir/$source" 
+done
+
+dot_dir="$( cd -P "$( dirname "$source" )" >/dev/null 2>&1 && pwd )"
+
+for f in $dot_dir/rc/*; do
     source "${f}"
 done
