@@ -17,6 +17,3 @@ bindkey -v
 
 export EDITOR=nvim
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
