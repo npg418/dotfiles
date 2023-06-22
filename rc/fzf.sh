@@ -1,6 +1,10 @@
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
 export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --bind 'ctrl-e:execute-silent:(nvim {})'
 "
 
 export FZF_CTRL_R_OPTS="
