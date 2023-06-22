@@ -22,3 +22,9 @@ if [ -x "$(command -v git)" ]; then
 elif [ -e ~/.gitconfig ]; then
     rm ~/.gitconfig
 fi
+
+if [ -x "$(command -v nvim)" ]; then
+    ln -sf $dot_dir/.config/nvim ~/.config/nvim
+elif [ -e ~/.config/nvim ]; then
+    rm ~/.config/nvim
+fi
