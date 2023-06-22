@@ -6,3 +6,5 @@ zsh-theme-powerlevel10k-git
 zsh-autosuggestion-git
 zsh-syntax-highlight-git
 volta-bin
+fzf
+bat

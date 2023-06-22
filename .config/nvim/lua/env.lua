@@ -10,12 +10,6 @@ vim.o.cmdheight = 1
 -- 絵文字を表示
 vim.o.emoji = true
 
--- 不可視文字を表示
-vim.wo.list = true
-
 -- 行番号を表示
 vim.wo.number = true
-
--- 相対的な行番号を表示
-vim.wo.relativenumber = true
 
