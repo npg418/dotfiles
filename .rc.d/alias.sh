@@ -1,9 +1,11 @@
+alias ll="ls -hl"
+alias la="ll -A"
+
 if [ -x $(command -v exa) ]; then
     alias ls="exa --icons"
+    alias ll="ls -hlg"
+    alias la="ll -a"
 fi
-
-alias ll="ls -hl"
-alias la="ll -a"
 
 if [ -x $(command -v git) ]; then
     alias g="git"
