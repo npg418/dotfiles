@@ -4,6 +4,7 @@ cd `dirname $0`
 dot_dir=$(pwd)
 
 ln -sf $dot_dir/.rc ~
+ln -sf $dot_dir/.rc.d ~
 
 if [[ $SHELL = */zsh ]]; then
     ln -sf $dot_dir/.zshrc ~

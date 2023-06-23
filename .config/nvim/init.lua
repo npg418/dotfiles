@@ -1,2 +1,1 @@
 require "env"
-require "dein"
