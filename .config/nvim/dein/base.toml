@@ -1,5 +1,0 @@
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-merged = '0'
-
