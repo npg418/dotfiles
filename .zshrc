@@ -17,3 +17,5 @@ bindkey -v
 
 export EDITOR=nvim
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
