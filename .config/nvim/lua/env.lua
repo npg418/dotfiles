@@ -13,3 +13,13 @@ vim.o.emoji = true
 -- 行番号を表示
 vim.wo.number = true
 
+-- クリップボードを共有
+vim.o.clipboard = 'unnamedplus'
+
+-- インデント設定
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+
+-- フォーマット設定
+vim.opt.formatoptions:remove('t')
+vim.opt.formatoptions:append('/mM')
