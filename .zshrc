@@ -17,5 +17,9 @@ bindkey -v
 
 export EDITOR=nvim
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+setopt share_history
+setopt incappendhistory
+setopt hist_ignore_dups
+setopt EXTENDED_HISTORY
