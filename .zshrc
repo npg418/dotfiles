@@ -23,3 +23,4 @@ setopt share_history
 setopt incappendhistory
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh

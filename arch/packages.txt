@@ -8,3 +8,4 @@ zsh-syntax-highlight-git
 volta-bin
 fzf
 bat
+z-git
