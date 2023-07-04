@@ -9,6 +9,7 @@ fi
 
 if [ -x $(command -v git) ]; then
     alias g="git"
+    alias cdgr='cd "$(git rev-parse --show-toplevel)"'
 fi
 
 if [ -x $(command -v nvim) ]; then
