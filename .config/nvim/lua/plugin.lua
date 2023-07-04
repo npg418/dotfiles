@@ -12,6 +12,15 @@ require('jetpack.paq') {
   'williamboman/mason-lspconfig.nvim',
   'lewis6991/gitsigns.nvim',
   'folke/tokyonight.nvim',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/vim-vsnip',
+  'hrsh7th/cmp-vsnip',
+  'onsails/lspkind.nvim',
+  'nvimdev/lspsaga.nvim',
+  'j-hui/fidget.nvim',
 }
 
 vim.g['fern#renderer'] = 'nerdfont'
