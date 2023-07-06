@@ -21,6 +21,13 @@ require('mason-lspconfig').setup_handlers {
     require('lspconfig')[server_name].setup {
       on_attach = on_attach,
       capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = {'vim'}
+          }
+        }
+      }
     }
   end,
 }

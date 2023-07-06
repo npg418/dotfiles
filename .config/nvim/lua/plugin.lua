@@ -24,6 +24,8 @@ require('jetpack.paq') {
   'nvimdev/lspsaga.nvim',
   'j-hui/fidget.nvim',
   'lukas-reineke/lsp-format.nvim',
+  'vim-airline/vim-airline',
+  {'vim-airline/vim-airline-themes', run = 'mkdir -p ~/.local/share/nvim/site/autoload/airline/themes && cd $_ && curl -O https://raw.githubusercontent.com/ghifarit53/tokyonight-vim/master/autoload/airline/themes/tokyonight.vim'},
 }
 
 vim.g['fern#renderer'] = 'nerdfont'

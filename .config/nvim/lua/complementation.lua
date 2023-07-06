@@ -9,10 +9,10 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
     { name = 'vsnip' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'nvim_lua' },
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping.select_prev_item(),
