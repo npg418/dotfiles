@@ -11,20 +11,19 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'vsnip' },
-    { name = 'buffer' },
     { name = 'path' },
+    { name = 'buffer' },
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<S-TAB>'] = cmp.mapping.select_prev_item(),
+    ['<TAB>'] = cmp.mapping.select_next_item(),
     ['<C-l>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
   },
-  view = 'wildmenu',
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol',
@@ -49,3 +48,5 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+vim.g.ph = 10
