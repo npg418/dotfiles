@@ -7,11 +7,12 @@ cmp.setup({
       vim.fn['vsnip#anonymous'](args.body)
     end,
   },
-  sources = { 
+  sources = {
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'nvim_lua' },
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -23,7 +24,7 @@ cmp.setup({
   experimental = {
     ghost_text = false,
   },
- 
+  view = 'wildmenu',
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol',
@@ -33,10 +34,18 @@ cmp.setup({
   }
 })
 
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }
   }
 })
 
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
