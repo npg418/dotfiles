@@ -1,7 +1,7 @@
 require('jetpack')
 vim.cmd('packadd vim-jetpack')
 require('jetpack.paq') {
-  {'tani/vim-jetpack'},
+  'tani/vim-jetpack',
   'junegunn/fzf.vim',
   {'junegunn/fzf', run = './install'},
   'lambdalisue/fern.vim',
@@ -26,6 +26,7 @@ require('jetpack.paq') {
   'lukas-reineke/lsp-format.nvim',
   'vim-airline/vim-airline',
   {'vim-airline/vim-airline-themes', run = 'mkdir -p ~/.local/share/nvim/site/autoload/airline/themes && cd $_ && curl -O https://raw.githubusercontent.com/ghifarit53/tokyonight-vim/master/autoload/airline/themes/tokyonight.vim'},
+  'tpope/vim-commentary',
 }
 
 vim.g['fern#renderer'] = 'nerdfont'
