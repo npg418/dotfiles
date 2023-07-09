@@ -14,6 +14,16 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+local lsp_settings = {
+  sumneko_lua = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'}
+      }
+    }
+  },
+}
+
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('mason-lspconfig').setup_handlers {
@@ -21,13 +31,7 @@ require('mason-lspconfig').setup_handlers {
     require('lspconfig')[server_name].setup {
       on_attach = on_attach,
       capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = {'vim'}
-          }
-        }
-      }
+      settings = lsp_settings[server_name],
     }
   end,
 }
