@@ -23,3 +23,6 @@ vim.o.shiftwidth = 2
 -- フォーマット設定
 vim.opt.formatoptions:remove('t')
 vim.opt.formatoptions:append('/mM')
+
+-- swapファイルを作成しない
+vim.opt.swapfile = false
