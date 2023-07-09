@@ -1,0 +1,4 @@
+PSReadLine
+Terminal-Icons
+PSFzf
+ZLocation
