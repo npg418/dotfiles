@@ -19,10 +19,10 @@ cmp.setup({
     ['<TAB>'] = cmp.mapping.select_next_item(),
     ['<C-l>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   }),
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
   },
   formatting = {
     format = lspkind.cmp_format({
@@ -49,4 +49,4 @@ cmp.setup.cmdline(':', {
   })
 })
 
-vim.g.ph = 10
+vim.opt.pumheight = 6
