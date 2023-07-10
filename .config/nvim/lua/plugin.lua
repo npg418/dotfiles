@@ -7,6 +7,8 @@ require('jetpack.paq') {
   'lambdalisue/fern.vim',
   'lambdalisue/nerdfont.vim',
   'lambdalisue/fern-renderer-nerdfont.vim',
+  'lambdalisue/fern-git-status.vim',
+  'lambdalisue/glyph-palette.vim',
   'neovim/nvim-lspconfig',
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
