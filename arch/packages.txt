@@ -9,3 +9,4 @@ volta-bin
 fzf
 bat
 z-git
+ripgrep
