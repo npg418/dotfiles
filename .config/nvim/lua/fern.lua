@@ -3,7 +3,7 @@ vim.keymap.set('n', '<C-n>', ':Fern . -reveal=% -drawer -toggle -width=40<CR>')
 vim.api.nvim_create_augroup('fern-config', {})
 vim.api.nvim_create_autocmd('FileType fern', {
   group = 'fern-config',
-  callback = function ()
+  callback = function()
     vim.call('glyph_palette#apply')
     local opt = { silent = true, buffer = true, remap = true }
     vim.keymap.set('n', 'p', '<Plug>(fern-action-preview:toggle)', opt)
