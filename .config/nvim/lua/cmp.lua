@@ -12,7 +12,7 @@ cmp.setup({
     { name = 'nvim_lua' },
     { name = 'vsnip' },
     { name = 'path' },
-    { name = 'buffer' },
+    { name = 'buffer', priority = -10 },
   },
   mapping = cmp.mapping.preset.insert({
     ['<S-TAB>'] = cmp.mapping.select_prev_item(),

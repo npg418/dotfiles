@@ -35,6 +35,9 @@ require('jetpack.paq') {
   },
   'ryanoasis/vim-devicons',
   'tpope/vim-commentary',
+  'nvim-lua/plenary.nvim',
+  'stevearc/dressing.nvim',
+  'akinsho/flutter-tools.nvim',
 }
 
 vim.g['fern#renderer'] = 'nerdfont'
@@ -43,3 +46,5 @@ vim.g['fern#renderer#nerdfont#indent_markers'] = 1
 require('gitsigns').setup()
 
 vim.cmd [[colorscheme tokyonight]]
+
+require("flutter-tools").setup {}
