@@ -36,3 +36,7 @@ if ! [ -x "$(command -v deno)" ]; then
 fi
 
 ln -sf $dot_dir/.config/locale.conf ~/.config/
+
+if [ -x "$(command -v tmux)" ]; then
+  ln -sf $dot_dir/.tmux.conf ~
+fi

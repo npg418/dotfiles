@@ -10,3 +10,4 @@ fzf
 bat
 z-git
 ripgrep
+tmux
