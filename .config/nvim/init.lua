@@ -1,7 +1,7 @@
 require 'env'
 require 'plugin'
 require 'lsp'
-require 'cmp'
+require 'comp'
 require 'format'
 require 'statusline'
 require 'fern'
