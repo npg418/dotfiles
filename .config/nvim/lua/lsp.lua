@@ -1,4 +1,4 @@
-local on_attach = function(_, _)
+local on_attach = function()
   local set = vim.keymap.set
   set('n', 'gd', vim.lsp.buf.definition)
   set('n', 'K', vim.lsp.buf.hover)
@@ -15,24 +15,51 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lsp_settings = {
-  sumneko_lua = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  },
-}
-
 require('mason').setup()
+
+local lspconfig = require('lspconfig')
 require('mason-lspconfig').setup()
 require('mason-lspconfig').setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    local opt = {
       on_attach = on_attach,
       capabilities = capabilities,
-      settings = lsp_settings[server_name],
     }
+    local node_root_dir = lspconfig.util.root_pattern("package.json")
+    local is_node_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
+
+    if server_name == "tsserver" then
+      if not is_node_repo then
+        return
+      end
+
+      opt.root_dir = node_root_dir
+    elseif server_name == "eslint" then
+      if not is_node_repo then
+        return
+      end
+
+      opt.root_dir = node_root_dir
+    elseif server_name == "denols" then
+      if is_node_repo then
+        return
+      end
+
+      opt.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
+      opt.init_options = {
+        lint = true,
+        unstable = true,
+        suggest = {
+          imports = {
+            hosts = {
+              ["https://deno.land"] = true,
+              ["https://cdn.nest.land"] = true,
+              ["https://crux.land"] = true
+            }
+          }
+        }
+      }
+    end
+    lspconfig[server_name].setup(opt)
   end,
 }
