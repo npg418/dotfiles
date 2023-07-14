@@ -12,3 +12,11 @@ vim.api.nvim_create_autocmd('FileType fern', {
     vim.keymap.set('n', '<C-u>', '<Plug>(fern-action-preview:scroll:up:half)', opt)
   end
 })
+vim.api.nvim_create_autocmd("WinEnter", {
+  callback = function()
+    if (vim.bo.filetype ~= "fern") then
+      vim.cmd("FernDo close -stay")
+    end
+  end,
+  group = 'fern-config'
+})

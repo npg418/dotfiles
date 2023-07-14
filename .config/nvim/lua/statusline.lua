@@ -17,3 +17,7 @@ vim.g['airline#extensions#tabline#show_tab_type'] = 1
 vim.g['airline#extensions#tabline#show_close_button'] = 0
 
 vim.g.airline_theme = 'tokyonight'
+
+vim.keymap.set('n', '<C-h>', '<cmd>bprevious<CR>')
+vim.keymap.set('n', '<C-l>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<C-q>', '<cmd>b#<CR><cmd>bd#<CR>')
