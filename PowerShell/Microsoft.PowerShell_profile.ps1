@@ -24,3 +24,5 @@ function Set-LocationToGitRoot {
   Set-Location $GitRoot
 }
 Set-Alias cdgr Set-LocationToGitRoot
+
+Import-Module posh-git

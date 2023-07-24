@@ -2,3 +2,4 @@ PSReadLine
 Terminal-Icons
 PSFzf
 ZLocation
+posh-git
