@@ -26,3 +26,5 @@ function Set-LocationToGitRoot {
 Set-Alias cdgr Set-LocationToGitRoot
 
 Import-Module posh-git
+
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
