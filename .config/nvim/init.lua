@@ -1,1 +1,2 @@
+require 'lazynvim'
 require 'env'
