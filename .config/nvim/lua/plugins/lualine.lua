@@ -1,7 +1,12 @@
 return {
   'nvim-lualine/lualine.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = 'VimEnter',
   config = function()
-    require'lualine'.setup()
-  end
+    vim.o.laststatus = 3
+    require'lualine'.setup({
+      options = {
+        globalstatus = true,
+      },
+    })
+  end,
 }

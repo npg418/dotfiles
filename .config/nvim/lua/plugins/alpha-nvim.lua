@@ -52,7 +52,7 @@ return {
     }
     local message = {
       type = 'text',
-      val = { 'へいよーぐっづすっす' },
+      val = { 'Hello neovim...' },
       opts = {
         position = 'center',
         hl = 'Text',

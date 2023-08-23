@@ -57,5 +57,3 @@ vim.o.helplang = 'ja,en'
 vim.o.winblend = 20
 vim.o.pumblend = 20
 vim.o.termguicolors = true
-
-vim.o.laststatus = 2
