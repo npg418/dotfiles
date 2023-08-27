@@ -11,3 +11,5 @@
 	helper = !/usr/bin/gh auth git-credential
 [safe]
 	directory = /opt/flutter
+[core]
+	autocrlf = input

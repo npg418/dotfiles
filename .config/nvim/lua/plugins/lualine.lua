@@ -2,9 +2,9 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VimEnter',
   config = function()
-    vim.o.laststatus = 3
-    require'lualine'.setup({
+    require 'lualine'.setup({
       options = {
+        theme = 'gruvbox',
         globalstatus = true,
       },
     })

@@ -48,12 +48,10 @@ vim.o.timeoutlen = 300
 vim.o.incsearch = true
 
 -- 一括置換をやりやすくする
-vim.cmd[[cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's']]
+vim.cmd [[cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's']]
 
 -- :hの言語を日本語優先にする
 vim.o.helplang = 'ja,en'
 
--- ポップアップの透過
-vim.o.winblend = 20
-vim.o.pumblend = 20
-vim.o.termguicolors = true
+-- ステータスラインを常に表示
+vim.o.laststatus = 3

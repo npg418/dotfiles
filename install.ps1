@@ -9,3 +9,7 @@ foreach ($Item in (Get-ChildItem .\PowerShell))
 if (Get-Command * | Where-Object { $_.Name -match "nvim" }) {
   New-Item $Env:LocalAppData\nvim -Force -ItemType SymbolicLink -Value (Resolve-Path .\.config\nvim)
 }
+
+if (Get-Command * | Where-Object { $_.Name -match "git" }) {
+  New-Item ~\.gitconfig -Force -ItemType SymbolicLink -Value $DotDir\.gitconfig | ForEach-Object { $_.Attributes += "Hidden" }
+}
