@@ -7,3 +7,4 @@
 	directory = /opt/flutter
 [core]
 	autocrlf = input
+	safecrlf = false
