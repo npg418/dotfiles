@@ -31,7 +31,18 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ['<TAB>'] = cmp.mapping.select_next_item(),
+        ['<TAB>'] = cmp.mapping(function(fallback)
+          if not cmp.visible() then
+            fallback()
+          end
+
+          local entry = cmp.get_selected_entry()
+          if entry then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.select })
+          else
+            cmp.select_next_item()
+          end
+        end, { 'i', 's', 'c', }),
         ['<S-TAB>'] = cmp.mapping.select_prev_item(),
         ['<C-e>'] = cmp.mapping({
           i = cmp.mapping.abort(),
@@ -40,10 +51,6 @@ return {
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        },
       }),
       window = {
         completion = cmp.config.window.bordered(),
