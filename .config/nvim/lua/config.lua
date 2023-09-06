@@ -47,9 +47,6 @@ vim.o.timeoutlen = 300
 -- 検索をやりやすく
 vim.o.incsearch = true
 
--- 一括置換をやりやすくする
-vim.cmd [[cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's']]
-
 -- :hの言語を日本語優先にする
 vim.o.helplang = 'ja,en'
 
