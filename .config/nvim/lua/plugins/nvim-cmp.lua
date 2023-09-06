@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -21,6 +22,13 @@ return {
     local lspkind = require('lspkind')
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup()
+
+    local has_words_before = function()
+      unpack = unpack or table.unpack
+      local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    end
+
     cmp.setup({
       completion = {
         completeopt = 'menu,menuone,noinsert',
@@ -31,26 +39,34 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ['<TAB>'] = cmp.mapping(function(fallback)
-          if not cmp.visible() then
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif has_words_before() then
+            cmp.complete()
+          else
             fallback()
           end
+        end, { "i", "s" }),
 
-          local entry = cmp.get_selected_entry()
-          if entry then
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.select })
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
           else
-            cmp.select_next_item()
+            fallback()
           end
-        end, { 'i', 's', 'c', }),
-        ['<S-TAB>'] = cmp.mapping.select_prev_item(),
+        end, { "i", "s" }),
         ['<C-e>'] = cmp.mapping({
           i = cmp.mapping.abort(),
           n = cmp.mapping.close(),
         }),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-Space>'] = cmp.mapping.confirm {},
       }),
       window = {
         completion = cmp.config.window.bordered(),
