@@ -52,8 +52,8 @@ return {
               bundle_path =  vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services',
             })
           end,
-          deno_ls = function()
-            lspconfig.deno_ls.setup({
+          denols = function()
+            lspconfig.denols.setup({
               root_dir = lspconfig.util.root_pattern({ 'deno.json', 'deno.jsonc' }),
             })
           end,
