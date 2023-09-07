@@ -14,6 +14,11 @@ return {
         local mason_lspconfig = require('mason-lspconfig')
         local lspconfig = require('lspconfig')
 
+        local function is_node()
+          local root = lspconfig.util.root_pattern('package.json')
+          return root(vim.api.nvim_buf_get_name(0)) ~= nil
+        end
+
         local handlers = {
           function(server)
             lspconfig[server].setup({
@@ -49,18 +54,22 @@ return {
           end,
           powershell_es = function()
             lspconfig.powershell_es.setup({
-              bundle_path =  vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services',
+              bundle_path = vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services',
             })
           end,
           denols = function()
-            lspconfig.denols.setup({
-              root_dir = lspconfig.util.root_pattern({ 'deno.json', 'deno.jsonc' }),
-            })
+            if not is_node() then
+              lspconfig.denols.setup({
+                root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+              })
+            end
           end,
-          tsserver = function ()
-            lspconfig.tsserver.setup({
-              root_dir = lspconfig.util.root_pattern({ 'package.json', 'tsconfig.json', 'node_modules' }),
-            })
+          tsserver = function()
+            if is_node() then
+              lspconfig.tsserver.setup({
+                root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'node_modules'),
+              })
+            end
           end
         }
         mason_lspconfig.setup_handlers(handlers)
