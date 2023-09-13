@@ -27,7 +27,7 @@ return {
                 vim.api.nvim_create_augroup('lsp', {})
                 vim.api.nvim_create_autocmd('BufWritePre', {
                   buffer = bufnr,
-                  callback = function() vim.lsp.format { async = true } end,
+                  callback = function() vim.lsp.buf.format { async = true } end,
                   group = 'lsp',
                 })
               end,
