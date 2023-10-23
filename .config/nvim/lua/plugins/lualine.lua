@@ -4,9 +4,20 @@ return {
   config = function()
     require 'lualine'.setup({
       options = {
-        theme = 'gruvbox',
         globalstatus = true,
       },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = {
+          {
+            'filename',
+            newfile_status = true,
+            path = 1,
+            shorting_target = 24,
+            symbols = { modified = '', readonly = '', newfile = '' },
+          },
+        },
+      }
     })
   end,
 }

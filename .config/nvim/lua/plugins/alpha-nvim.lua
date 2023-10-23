@@ -47,7 +47,7 @@ return {
       val = AA,
       opts = {
         position = 'center',
-        hl = 'Comment',
+        hl = 'Text',
       },
     }
     local message = {
@@ -55,7 +55,7 @@ return {
       val = { 'Hello neovim...' },
       opts = {
         position = 'center',
-        hl = 'Text',
+        hl = 'Comment',
       },
     }
     local buttons = {
