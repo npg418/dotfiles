@@ -2,7 +2,7 @@
 vim.scriptencoding = 'utf-8'
 
 -- 2バイト文字を描画する
-vim.o.ambiwidth = 'double'
+-- vim.o.ambiwidth = 'double'
 
 -- メッセージ表示欄を1行確保
 vim.o.cmdheight = 1
