@@ -1,8 +1,11 @@
 return {
   'tpope/vim-commentary',
   keys = {
-    'gcc',
-    'gcgc',
-    { 'gc', mode = 'v' },
+    '<C-_>',
+    { '<C-_>', mode = 'v' },
   },
+  config = function()
+    vim.keymap.set('n', '<C-_>', 'gcc', { remap = true, silent = true })
+    vim.keymap.set('v', '<C-_>', 'gc', { remap = true, silent = true })
+  end,
 }
