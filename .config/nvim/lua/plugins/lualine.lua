@@ -37,7 +37,12 @@ return {
         },
         lualine_b = {},
         lualine_c = {},
-        lualine_x = { 'diff' },
+        lualine_x = {
+          {
+            'diff',
+            symbols = { added = ' ', modified = ' ', removed = ' ' },
+          },
+        },
         lualine_y = { 'branch' },
         lualine_z = { 'tabs' },
       },
