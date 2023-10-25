@@ -14,20 +14,22 @@ return {
     {
       'lambdalisue/glyph-palette.vim',
       config = function()
-        vim.cmd [[
-          augroup my-glyph-palette
-            autocmd! *
-            autocmd FileType fern call glyph_palette#apply()
-            autocmd FileType nerdtree,startify call glyph_palette#apply()
-          augroup end
-        ]]
+        vim.api.nvim_create_augroup('glyph-palette', {})
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'fern',
+          group = 'glyph-palette',
+          callback = function ()
+            vim.fn['glyph_palette#apply']()
+          end
+        })
       end,
     },
     {
       'yuki-yano/fern-preview.vim',
       config = function()
         vim.api.nvim_create_augroup('quicklook', {})
-        vim.api.nvim_create_autocmd('FileType fern', {
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'fern',
           group = 'quicklook',
           callback = function()
             local function set(keys, command)
