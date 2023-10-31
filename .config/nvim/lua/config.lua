@@ -47,8 +47,6 @@ vim.o.timeoutlen = 300
 -- 検索をやりやすく
 vim.o.incsearch = true
 
--- :hの言語を日本語優先にする
-vim.o.helplang = 'ja,en'
 
 -- ステータスラインを常に表示
 vim.o.laststatus = 3

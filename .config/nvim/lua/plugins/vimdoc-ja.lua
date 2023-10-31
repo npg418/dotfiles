@@ -4,4 +4,8 @@ return {
   keys = {
     { 'h', mode = 'c', },
   },
+  config = function()
+    vim.o.helplang = 'ja,en'
+  end
 }
+
