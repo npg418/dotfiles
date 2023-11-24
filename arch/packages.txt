@@ -11,3 +11,4 @@ bat
 z-git
 ripgrep
 tmux
+eza

@@ -1,8 +1,8 @@
 alias ll="ls -hl"
 alias la="ll -A"
 
-if [ -x $(command -v exa) ]; then
-    alias ls="exa --icons"
+if [ -x $(command -v eza) ]; then
+    alias ls="eza --icons"
     alias ll="ls -hlg"
     alias la="ll -a"
 fi
