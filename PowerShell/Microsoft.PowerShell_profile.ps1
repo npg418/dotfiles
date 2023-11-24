@@ -5,9 +5,27 @@ Set-Alias code code-insiders
 Set-Alias zip Compress-Archive
 Set-Alias unzip Expand-Archive
 Set-Alias v nvim
+Set-Alias g git
 Set-Alias grep findstr
 
-oh-my-posh init pwsh --config https://raw.githubusercontent.com/craftzdog/dotfiles-public/master/.config/powershell/takuya.omp.json | Invoke-Expression
+if (Test-Path alias:ls)
+{
+  Remove-Alias ls -Force
+}
+function ls
+{
+  Invoke-Expression "eza --icons --git $args"
+}
+function ll
+{
+  Invoke-Expression "ls --long --header --group $args"
+}
+function la
+{
+  Invoke-Expression "ll --all $args"
+}
+
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\gruvbox.omp.json" | Invoke-Expression
 
 Import-Module PSReadLine
 Set-PSReadLineOption -EditMode Vi -BellStyle Visual -PredictionSource HistoryAndPlugin
@@ -19,7 +37,8 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 
 Import-Module ZLocation
 
-function Set-LocationToGitRoot {
+function Set-LocationToGitRoot
+{
   $GitRoot = git rev-parse --show-toplevel
   Set-Location $GitRoot
 }
