@@ -50,7 +50,7 @@
           "trailing_diamond": "",
           "foreground": "p:text",
           "background": "p:green",
-          "template": " {{ .UpstreamIcon }} {{ .HEAD }} {{ if (gt .Ahead 0) }}<p:red>{{ .Ahead }}</> {{ end }}{{ if (gt .Behind 0) }}<p:magenta>{{ .Behind }}</> {{ end }}{{ if .Working.Changed }}<p:yellow>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <p:blue>{{ .Staging.String }}</>{{ end }} ",
+          "template": " {{ .UpstreamIcon }} {{ .HEAD }}{{ if (gt .Ahead 0) }} <p:red>{{ .Ahead }}</>{{ end }}{{ if (gt .Behind 0) }} <p:magenta>{{ .Behind }}</>{{ end }}{{ if .Working.Changed }} <p:yellow>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <p:blue>{{ .Staging.String }}</>{{ end }} ",
           "properties": {
             "fetch_upstream_icon": true,
             "fetch_status": true,

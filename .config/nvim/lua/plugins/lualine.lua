@@ -32,7 +32,7 @@ return {
         lualine_a = {
           {
             'buffers',
-            symbols = { modified = ' _󰷥', alternate_file = ' ', directory = ' ' },
+            symbols = { modified = ' ●', directory = ' ' },
           },
         },
         lualine_b = {},
