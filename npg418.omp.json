@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "console_title_template": "{{ if .Root }}󱐋 {{ end }}{{ .Shell }} in {{ if .Segments.Session.SSHSession }}{{ .UserName }}@{{ .HostName }}:{{ end }}{{ .PWD }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:black",
+          "template": "╭─"
+        },
+        {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "p:yellow",
+          "background": "p:black",
+          "template": " {{ if .WSL }} on {{ end }}{{.Icon}} "
+        },
+        {
+          "type": "session",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "p:black",
+          "background": "p:yellow",
+          "template": " {{ if .SSHSession }} {{ end }}{{ .UserName }}{{ if .SSHSession }}@{{ .HostName }}{{ end }} "
+        },
+        {
+          "type": "path",
+          "style": "{{ if .Segments.Git.Dir }}powerline{{ else }}diamond{{ end }}",
+          "powerline_symbol": "",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "p:text",
+          "background": "p:blue",
+          "template": " {{ if .Segments.Git.Dir }} {{ url .Segments.Git.RepoName .Segments.Git.UpstreamURL }}{{ .PWD | replace .Segments.Git.Dir \"\" }}{{ else }}{{ .Path }}{{ end }} ",
+          "properties": {
+            "style": "mixed"
+          }
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "p:text",
+          "background": "p:green",
+          "template": " {{ .UpstreamIcon }} {{ .HEAD }} {{ if (gt .Ahead 0) }}<p:red>{{ .Ahead }}</> {{ end }}{{ if (gt .Behind 0) }}<p:magenta>{{ .Behind }}</> {{ end }}{{ if .Working.Changed }}<p:yellow>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <p:blue>{{ .Staging.String }}</>{{ end }} ",
+          "properties": {
+            "fetch_upstream_icon": true,
+            "fetch_status": true,
+            "branch_icon": " "
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "p:white",
+          "background": "p:black"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:black",
+          "template": "╰─"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:white",
+          "template": "❯"
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "text": "#24283b",
+    "black": "#414868",
+    "blue": "#7aa2f7",
+    "green": "#73daca",
+    "magenta": "#bb9af7",
+    "red": "#f7768e",
+    "white": "#c0caf5",
+    "yellow": "#e0af68"
+  }
+}

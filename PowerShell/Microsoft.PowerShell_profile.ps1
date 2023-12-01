@@ -25,7 +25,9 @@ function la
   Invoke-Expression "ll --all $args"
 }
 
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\gruvbox.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\npg418.omp.json" | Invoke-Expression
+Import-Module posh-git
+$env:POSH_GIT_ENABLED = $true
 
 Import-Module PSReadLine
 Set-PSReadLineOption -EditMode Vi -BellStyle Visual -PredictionSource HistoryAndPlugin
@@ -43,7 +45,5 @@ function Set-LocationToGitRoot
   Set-Location $GitRoot
 }
 Set-Alias cdgr Set-LocationToGitRoot
-
-Import-Module posh-git
 
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
