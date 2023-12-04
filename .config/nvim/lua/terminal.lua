@@ -21,6 +21,6 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.keymap.set('n', '<A-t>', ':T<CR>')
 vim.keymap.set('t', '<A-t>', '<C-c> exit<CR>')
 
-if vim.fn.executable('pwsh') then
+if vim.fn.executable('pwsh') == 1 then
   vim.o.shell = 'pwsh'
 end
