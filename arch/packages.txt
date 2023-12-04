@@ -2,7 +2,6 @@ git
 github-cli
 neovim
 zsh
-zsh-theme-powerlevel10k-git
 zsh-autosuggestion-git
 zsh-syntax-highlight-git
 volta-bin
@@ -12,3 +11,4 @@ z-git
 ripgrep
 tmux
 eza
+oh-my-posh
