@@ -2,8 +2,8 @@ git
 github-cli
 neovim
 zsh
-zsh-autosuggestion-git
-zsh-syntax-highlight-git
+zsh-completions
+zsh-syntax-highlighting
 volta-bin
 fzf
 bat
