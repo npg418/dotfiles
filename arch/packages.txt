@@ -2,7 +2,7 @@ git
 github-cli
 neovim
 zsh
-zsh-completions
+zsh-autosuggestions
 zsh-syntax-highlighting
 volta-bin
 fzf
