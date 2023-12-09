@@ -64,6 +64,33 @@
       "alignment": "right",
       "segments": [
         {
+          "type": "cmake",
+          "style": "diamond",
+          "leading_diamond": "<#F32735></>",
+          "trailing_diamond": "<#0068C7,transparent></>",
+          "foreground": "p:text",
+          "background": "transparent",
+          "template": "<,#F32735>   </><#F32735,#3EAE2B></><,#3EAE2B> cmake </><#3EAE2B,#0068C7></><,#0068C7> {{ .Full }} </>"
+        },
+        {
+          "type": "deno",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "p:text",
+          "background": "#FFFFFF",
+          "template": " 🦕 {{ .Full }} "
+        },
+        {
+          "type": "docker",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "p:text",
+          "background": "#1D63ED",
+          "template": "  {{ .Context }} "
+        },
+        {
           "type": "time",
           "style": "diamond",
           "leading_diamond": "",
@@ -87,7 +114,7 @@
           "type": "text",
           "style": "plain",
           "foreground": "p:white",
-          "template": "❯"
+          "template": "❯ "
         }
       ]
     }
