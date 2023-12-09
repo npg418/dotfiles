@@ -48,5 +48,6 @@ return {
       },
     })
     vim.o.showmode = false
+    vim.o.ambiwidth = 'single'
   end,
 }

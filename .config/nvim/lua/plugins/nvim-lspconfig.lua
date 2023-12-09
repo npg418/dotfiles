@@ -27,9 +27,7 @@ return {
                 vim.api.nvim_create_augroup('lsp', {})
                 vim.api.nvim_create_autocmd('BufWritePre', {
                   buffer = bufnr,
-                  callback = function()
-                    vim.lsp.buf.format { async = true }
-                  end,
+                  callback = vim.lsp.buf.format,
                   group = 'lsp',
                 })
               end,
@@ -81,13 +79,13 @@ return {
   config = function()
     local set = vim.keymap.set
     set('n', 'K', vim.lsp.buf.hover)
-    set('n', 'gf', function() vim.lsp.buf.format { async = true } end)
+    set('n', 'gf', vim.lsp.buf.format)
     set('n', 'gr', vim.lsp.buf.references)
     set('n', 'gd', vim.lsp.buf.definition)
     set('n', 'gD', vim.lsp.buf.declaration)
     set('n', 'gi', vim.lsp.buf.implementation)
     set('n', 'gt', vim.lsp.buf.type_definition)
-    set('n', '<space>rn', vim.lsp.buf.rename)
+    set('n', 'gn', vim.lsp.buf.rename)
     set('n', 'ge', vim.diagnostic.open_float)
     set('n', 'g]', vim.diagnostic.goto_next)
     set('n', 'g[', vim.diagnostic.goto_prev)
