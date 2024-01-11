@@ -1,4 +1,4 @@
-require 'lazynvim'
-require 'config'
-require 'keymap'
-require 'terminal'
+require 'config.eazynvim'
+require 'config.config'
+require 'config.keymap'
+require 'config.terminal'
