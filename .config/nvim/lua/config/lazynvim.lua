@@ -22,6 +22,9 @@ local opts = {
       enabled = true,
     },
   },
+  change_detection = {
+    notify = false,
+  },
 }
 
 -- プラグインスペックを`lua/plugins`から読み取る
