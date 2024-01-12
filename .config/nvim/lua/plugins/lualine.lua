@@ -1,5 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
+  enabled = false,
   event = 'VimEnter',
   config = function()
     require 'lualine'.setup({

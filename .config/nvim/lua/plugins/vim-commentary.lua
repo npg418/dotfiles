@@ -1,5 +1,6 @@
 return {
   'tpope/vim-commentary',
+  enabled = false,
   keys = {
     '<C-_>',
     { '<C-_>', mode = 'v' },
