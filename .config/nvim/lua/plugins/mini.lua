@@ -21,6 +21,8 @@ return {
         require 'mini.animate'.setup()
         require 'mini.bufremove'.setup()
         vim.keymap.set('n', '<C-w>', MiniBufremove.wipeout)
+        require 'mini.tabline'.setup()
+        require 'mini.trailspace'.setup()
       end
     })
 
