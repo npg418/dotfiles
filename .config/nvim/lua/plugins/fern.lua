@@ -1,5 +1,6 @@
 return {
   'lambdalisue/fern.vim',
+  enabled = false,
   keys = {
     { '<C-n>', '<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>', desc = 'toggle [F]ern' },
   },
