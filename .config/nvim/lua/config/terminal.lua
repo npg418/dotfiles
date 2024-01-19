@@ -5,13 +5,14 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt_local.relativenumber = false
     vim.opt_local.number = false
     vim.opt_local.bufhidden = 'wipe'
+    vim.opt_local.buflisted = false
     vim.cmd.startinsert()
   end
 })
 vim.api.nvim_create_autocmd('TermClose', {
   group = 'terminal',
   callback = function()
-    vim.cmd.close()
+    vim.cmd.close { bang = true }
   end
 })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
