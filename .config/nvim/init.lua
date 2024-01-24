@@ -1,4 +1,5 @@
 require 'config.lazynvim'
-require 'config.config'
+require 'config.options'
 require 'config.keymap'
 require 'config.terminal'
+require 'config.misc'

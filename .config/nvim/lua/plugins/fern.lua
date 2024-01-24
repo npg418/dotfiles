@@ -2,8 +2,17 @@ return {
   'lambdalisue/fern.vim',
   enabled = false,
   keys = {
-    { '<C-n>', '<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>', desc = 'toggle [F]ern' },
+    { '<C-n>', '<cmd>Fern . -reveal=% -drawer -toggle -width=30<CR>' },
   },
+  config = function ()
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'fern',
+      callback = function ()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+      end
+    })
+  end,
   dependencies = {
     'lambdalisue/nerdfont.vim',
     {
@@ -15,10 +24,8 @@ return {
     {
       'lambdalisue/glyph-palette.vim',
       config = function()
-        vim.api.nvim_create_augroup('glyph-palette', {})
         vim.api.nvim_create_autocmd('FileType', {
           pattern = 'fern',
-          group = 'glyph-palette',
           callback = function ()
             vim.fn['glyph_palette#apply']()
           end
@@ -28,10 +35,8 @@ return {
     {
       'yuki-yano/fern-preview.vim',
       config = function()
-        vim.api.nvim_create_augroup('quicklook', {})
         vim.api.nvim_create_autocmd('FileType', {
           pattern = 'fern',
-          group = 'quicklook',
           callback = function()
             local function set(keys, command)
               vim.keymap.set('n', keys, '<Plug>(fern-action-preview:' .. command .. ')',

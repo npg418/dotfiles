@@ -7,7 +7,6 @@ return {
       once = true,
       callback = function()
         require 'mini.ai'.setup()
-        require 'mini.comment'.setup()
         require 'mini.splitjoin'.setup()
         require 'mini.pairs'.setup()
         require 'mini.surround'.setup()
@@ -18,11 +17,25 @@ return {
       once = true,
       callback = function()
         require 'mini.indentscope'.setup()
-        require 'mini.animate'.setup()
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'NvimTree',
+          callback = function()
+            ---@diagnostic disable-next-line: inject-field
+            vim.b.miniindentscope_disable = true
+          end
+        })
         require 'mini.bufremove'.setup()
+        vim.keymap.set('n', '<C-q>', '<C-w>')
         vim.keymap.set('n', '<C-w>', MiniBufremove.wipeout)
-        require 'mini.tabline'.setup()
         require 'mini.trailspace'.setup()
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'lazy',
+          callback = function()
+            ---@diagnostic disable-next-line: inject-field
+            vim.b.minitrailspace_disable = true
+          end
+        })
+        require 'mini.comment'.setup()
       end
     })
 
