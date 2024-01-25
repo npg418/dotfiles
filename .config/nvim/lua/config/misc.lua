@@ -1,10 +1,9 @@
 vim.cmd.highlight('LineNr guifg=grey')
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'help',
+vim.api.nvim_create_autocmd('BufWinEnter', {
   callback = function()
-    vim.cmd.wincmd('L')
+    if (vim.bo.buftype == 'help') then
+      vim.cmd.wincmd('L')
+    end
   end
 })
-
-

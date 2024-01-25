@@ -6,7 +6,6 @@ return {
     vim.api.nvim_create_autocmd('InsertEnter', {
       once = true,
       callback = function()
-        require 'mini.ai'.setup()
         require 'mini.splitjoin'.setup()
         require 'mini.pairs'.setup()
         require 'mini.surround'.setup()
@@ -84,5 +83,6 @@ return {
       set_vim_setting = false
     })
     vim.o.laststatus = 3
+    vim.o.showmode = false
   end
 }

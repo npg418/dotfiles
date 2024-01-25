@@ -24,11 +24,11 @@ return {
             lspconfig[server].setup({
               capabilities = require('cmp_nvim_lsp').default_capabilities(),
               on_attach = function(_, bufnr)
-                vim.api.nvim_create_augroup('lsp', {})
                 vim.api.nvim_create_autocmd('BufWritePre', {
                   buffer = bufnr,
-                  callback = vim.lsp.buf.format,
-                  group = 'lsp',
+                  callback = function()
+                    vim.lsp.buf.format { buffer = bufnr }
+                  end,
                 })
               end,
             })

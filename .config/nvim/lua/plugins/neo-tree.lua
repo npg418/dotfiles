@@ -1,8 +1,9 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
-  keymap = {
-    { 'n', '<C-n>', '<cmd>NeoTree<CR>' }
+  keys = {
+    { '<C-n>', '<cmd>Neotree toggle reveal<CR>' },
+    { '<C-g>', '<cmd>Neotree float git_status<CR>' }
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -11,6 +12,29 @@ return {
     '3rd/image.nvim',
   },
   config = function()
-    require 'neo-tree'.setup();
+    require 'neo-tree'.setup({
+      close_if_last_window = true,
+      default_component_configs = {
+        git_status = {
+          -- added = 'A',
+          -- deleted = 'D',
+          -- modified = 'M',
+          -- renamed = 'RN',
+          -- untracked = 'U',
+          -- ignored = 'IG',
+          -- unstaged = 'US',
+          -- staged = 'S',
+          -- conflict = 'C',
+        }
+      },
+      window = {
+        width = 30,
+        mappings = {
+          l = 'open',
+          L = 'open_vsplit',
+          h = 'close_node'
+        }
+      }
+    })
   end
 }
