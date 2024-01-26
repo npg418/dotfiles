@@ -8,7 +8,7 @@ return {
     bufferline.setup({
       options = {
         indicator = {
-          style = 'underline'
+          style = 'none'
         },
         diagnostics = 'nvim_lsp',
         show_buffer_close_icons = false,
