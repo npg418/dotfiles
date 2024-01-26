@@ -32,7 +32,8 @@ return {
         mappings = {
           l = 'open',
           L = 'open_vsplit',
-          h = 'close_node'
+          h = 'close_node',
+          H = 'navigate_up'
         }
       }
     })
