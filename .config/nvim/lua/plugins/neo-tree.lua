@@ -27,13 +27,15 @@ return {
           -- conflict = 'C',
         }
       },
-      window = {
-        width = 30,
-        mappings = {
-          l = 'open',
-          L = 'open_vsplit',
-          h = 'close_node',
-          H = 'navigate_up'
+      filesystem = {
+        window = {
+          width = 30,
+          mappings = {
+            l = 'open',
+            L = 'open_vsplit',
+            h = 'close_node',
+            H = 'navigate_up'
+          }
         }
       }
     })
