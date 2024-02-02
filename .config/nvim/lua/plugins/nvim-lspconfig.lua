@@ -23,12 +23,9 @@ return {
           function(server)
             lspconfig[server].setup({
               capabilities = require('cmp_nvim_lsp').default_capabilities(),
-              on_attach = function(_, bufnr)
+              on_attach = function()
                 vim.api.nvim_create_autocmd('BufWritePre', {
-                  buffer = bufnr,
-                  callback = function()
-                    vim.lsp.buf.format { buffer = bufnr }
-                  end,
+                  callback = vim.lsp.buf.format,
                 })
               end,
             })
@@ -90,6 +87,20 @@ return {
     set('n', 'g]', vim.diagnostic.goto_next)
     set('n', 'g[', vim.diagnostic.goto_prev)
     set('n', 'ga', vim.lsp.buf.code_action)
+
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'qf',
+      callback = function()
+        vim.opt_local.buflisted = false
+      end
+    })
+    vim.api.nvim_create_autocmd('BufLeave', {
+      callback = function()
+        if vim.bo.buftype == 'quickfix' then
+          vim.cmd.cclose()
+        end
+      end
+    })
 
     vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
       { virtual_text = true })
