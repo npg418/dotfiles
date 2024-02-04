@@ -34,8 +34,12 @@ return {
             l = 'open',
             L = 'open_vsplit',
             h = 'close_node',
-            H = 'navigate_up'
+            H = 'navigate_up',
+            ['!'] = 'toggle_hidden'
           }
+        },
+        filtered_items = {
+          hide_gitignored = false,
         }
       }
     })
