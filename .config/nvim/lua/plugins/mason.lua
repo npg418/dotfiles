@@ -15,6 +15,7 @@ return {
         package_uninstalled = '✗',
         package_pending = '⟳',
       },
+      border = 'single'
     },
   },
   build = ':MasonUpdate',

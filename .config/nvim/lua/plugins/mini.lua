@@ -16,13 +16,6 @@ return {
       once = true,
       callback = function()
         require 'mini.indentscope'.setup()
-        vim.api.nvim_create_autocmd('FileType', {
-          pattern = 'NvimTree',
-          callback = function()
-            ---@diagnostic disable-next-line: inject-field
-            vim.b.miniindentscope_disable = true
-          end
-        })
         require 'mini.bufremove'.setup()
         vim.keymap.set('n', '<C-q>', '<C-w>')
         vim.keymap.set('n', '<C-w>', MiniBufremove.wipeout)

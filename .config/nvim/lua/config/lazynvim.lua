@@ -13,6 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- デフォルトの設定
+---@type LazyConfig
 local opts = {
   defaults = {
     lazy = true,
@@ -25,6 +26,13 @@ local opts = {
   change_detection = {
     notify = false,
   },
+  install = {
+    colorscheme = { 'tokyonight' }
+  },
+  ui = {
+    border = 'single',
+    title = 'Lazy'
+  }
 }
 
 -- プラグインスペックを`lua/plugins`から読み取る
