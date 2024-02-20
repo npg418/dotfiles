@@ -27,7 +27,7 @@ local opts = {
     notify = false,
   },
   install = {
-    colorscheme = { 'tokyonight' }
+    colorscheme = { 'hatsunemiku' }
   },
   ui = {
     border = 'single',
