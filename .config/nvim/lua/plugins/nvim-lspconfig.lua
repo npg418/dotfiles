@@ -37,9 +37,6 @@ return {
                   diagnostics = {
                     globals = { 'vim' },
                   },
-                  completion = {
-                    callSnippet = 'Replace',
-                  },
                   workspace = {
                     checkThirdParty = false,
                   },
