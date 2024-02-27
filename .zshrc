@@ -18,3 +18,5 @@ eval "$(oh-my-posh init zsh --config ~/.local/share/oh-my-posh/themes/npg418.omp
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+eval $(thefuck --alias)

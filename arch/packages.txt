@@ -12,3 +12,4 @@ ripgrep
 tmux
 eza
 oh-my-posh
+thefuck
