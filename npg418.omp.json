@@ -20,7 +20,7 @@
           "trailing_diamond": "",
           "foreground": "p:yellow",
           "background": "p:black",
-          "template": " {{ if .WSL }} on {{ end }}{{.Icon}} "
+          "template": " {{.Icon}}{{ if .WSL }} on  {{ end }} "
         },
         {
           "type": "session",
