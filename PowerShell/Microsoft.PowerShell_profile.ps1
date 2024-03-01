@@ -47,3 +47,5 @@ function Set-LocationToGitRoot
 Set-Alias cdgr Set-LocationToGitRoot
 
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+
+Import-Module PoShFuck
