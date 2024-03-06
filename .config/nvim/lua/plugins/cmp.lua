@@ -5,7 +5,7 @@ return {
   dependencies = {
     {
       'L3MON4D3/LuaSnip',
-      version = "2.*",
+      version = '2.*',
       dependencies = {
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
@@ -39,7 +39,7 @@ return {
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
-          select = true
+          select = true,
         }),
       }),
       window = {
@@ -53,7 +53,7 @@ return {
           option = {
             get_bufnrs = function()
               return vim.api.nvim_list_bufs()
-            end
+            end,
           },
         },
         { name = 'path' },
@@ -64,11 +64,11 @@ return {
           mode = 'symbol_text',
           maxwidth = 50,
           ellipsis_char = '...',
-          menu = ({
+          menu = {
             buffer = '[Buffer]',
             nvim_lsp = '[LSP]',
             path = '[Path]',
-          }),
+          },
         }),
       },
       experimental = {
