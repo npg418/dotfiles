@@ -7,20 +7,20 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt_local.bufhidden = 'wipe'
     vim.opt_local.buflisted = false
     vim.cmd.startinsert()
-  end
+  end,
 })
 vim.api.nvim_create_autocmd('TermClose', {
   group = 'terminal',
   callback = function()
-    vim.cmd.close { bang = true }
-  end
+    vim.cmd.close({ bang = true })
+  end,
 })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   group = 'terminal',
   pattern = 'term://*',
   callback = function()
     vim.cmd.startinsert()
-  end
+  end,
 })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')

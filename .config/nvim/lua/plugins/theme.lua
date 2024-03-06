@@ -6,7 +6,7 @@ return {
     priority = 1000,
     config = function()
       -- vim.cmd.colorscheme 'gruvbox'
-    end
+    end,
   },
   {
     'folke/tokyonight.nvim',
@@ -15,16 +15,16 @@ return {
     priority = 1000,
     config = function()
       -- vim.cmd.colorscheme 'tokyonight'
-    end
+    end,
   },
   {
     '4513ECHO/vim-colors-hatsunemiku',
     lazy = false,
     enable = true,
     priority = 1000,
-    config = function ()
-      vim.cmd.colorscheme 'hatsunemiku'
+    config = function()
+      vim.cmd.colorscheme('hatsunemiku')
       vim.o.termguicolors = true
-    end
-  }
+    end,
+  },
 }

@@ -3,7 +3,7 @@ return {
   branch = 'v3.x',
   keys = {
     { '<C-n>', '<cmd>Neotree toggle reveal<CR>' },
-    { '<C-g>', '<cmd>Neotree float git_status<CR>' }
+    { '<C-g>', '<cmd>Neotree float git_status<CR>' },
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -12,7 +12,7 @@ return {
     '3rd/image.nvim',
   },
   config = function()
-    require 'neo-tree'.setup({
+    require('neo-tree').setup({
       close_if_last_window = true,
       default_component_configs = {
         git_status = {
@@ -25,7 +25,7 @@ return {
           -- unstaged = 'US',
           -- staged = 'S',
           -- conflict = 'C',
-        }
+        },
       },
       filesystem = {
         window = {
@@ -35,16 +35,16 @@ return {
             L = 'open_vsplit',
             h = 'close_node',
             H = 'navigate_up',
-            ['!'] = 'toggle_hidden'
-          }
+            ['!'] = 'toggle_hidden',
+          },
         },
         filtered_items = {
           hide_gitignored = false,
           hide_by_name = {
-            'node_modules'
-          }
-        }
-      }
+            'node_modules',
+          },
+        },
+      },
     })
-  end
+  end,
 }

@@ -3,7 +3,7 @@ return {
   enabled = false,
   event = 'VimEnter',
   config = function()
-    require 'lualine'.setup({
+    require('lualine').setup({
       options = {
         globalstatus = true,
       },

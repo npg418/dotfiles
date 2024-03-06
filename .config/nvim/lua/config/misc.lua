@@ -2,10 +2,10 @@ vim.cmd.highlight('LineNr guifg=grey')
 
 vim.api.nvim_create_autocmd('BufWinEnter', {
   callback = function()
-    if (vim.bo.buftype == 'help') then
+    if vim.bo.buftype == 'help' then
       vim.cmd.wincmd('L')
     end
-  end
+  end,
 })
 
 vim.api.nvim_create_user_command('ClearReg', function()

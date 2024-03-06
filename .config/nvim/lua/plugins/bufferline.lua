@@ -4,21 +4,21 @@ return {
   event = 'VimEnter',
   dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()
-    local bufferline = require 'bufferline'
+    local bufferline = require('bufferline')
     bufferline.setup({
       options = {
         indicator = {
-          style = 'none'
+          style = 'none',
         },
         diagnostics = 'nvim_lsp',
         show_buffer_close_icons = false,
-        separator_style = {'', ''}
+        separator_style = { '', '' },
       },
       highlights = {
         fill = {
-          bg = '#24283B'
+          bg = '#24283B',
         },
-      }
+      },
     })
-  end
+  end,
 }

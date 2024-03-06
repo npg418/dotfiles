@@ -2,7 +2,7 @@ return {
   'nvim-tree/nvim-tree.lua',
   enabled = false,
   keys = {
-    { '<C-n>', '<cmd>NvimTreeToggle<CR>', mode = 'n' }
+    { '<C-n>', '<cmd>NvimTreeToggle<CR>', mode = 'n' },
   },
   config = function()
     vim.g.loaded_netrw = 1
@@ -15,16 +15,16 @@ return {
         git_ignored = false,
         custom = {
           '^\\.git',
-          '^node_modules'
-        }
+          '^node_modules',
+        },
       },
       renderer = {
         indent_markers = {
-          enable = true
+          enable = true,
         },
         icons = {
-          git_placement = 'after'
-        }
+          git_placement = 'after',
+        },
       },
       on_attach = function(bufnr)
         local api = require('nvim-tree.api')
@@ -39,5 +39,5 @@ return {
         vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
       end,
     })
-  end
+  end,
 }

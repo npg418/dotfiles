@@ -4,13 +4,13 @@ return {
   keys = {
     { '<C-n>', '<cmd>Fern . -reveal=% -drawer -toggle -width=30<CR>' },
   },
-  config = function ()
+  config = function()
     vim.api.nvim_create_autocmd('FileType', {
       pattern = 'fern',
-      callback = function ()
+      callback = function()
         vim.opt_local.number = false
         vim.opt_local.relativenumber = false
-      end
+      end,
     })
   end,
   dependencies = {
@@ -26,9 +26,9 @@ return {
       config = function()
         vim.api.nvim_create_autocmd('FileType', {
           pattern = 'fern',
-          callback = function ()
+          callback = function()
             vim.fn['glyph_palette#apply']()
-          end
+          end,
         })
       end,
     },
@@ -39,16 +39,19 @@ return {
           pattern = 'fern',
           callback = function()
             local function set(keys, command)
-              vim.keymap.set('n', keys, '<Plug>(fern-action-preview:' .. command .. ')',
+              vim.keymap.set(
+                'n',
+                keys,
+                '<Plug>(fern-action-preview:' .. command .. ')',
                 { remap = true, buffer = true, silent = true }
               )
             end
             set('<SPACE>', 'toggle')
             set('<C-u>', 'scroll:up:half')
             set('<C-d>', 'scroll:down:half')
-          end
+          end,
         })
-      end
+      end,
     },
   },
 }

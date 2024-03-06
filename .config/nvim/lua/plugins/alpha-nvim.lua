@@ -10,7 +10,6 @@ local AA = {
   [[.￣￣￣￣￣￣￣＼/＿＿＿＿＿/￣￣￣￣￣]],
 }
 
-
 local function button(sc, txt, keybind)
   local sc_ = sc:gsub('%s', ''):gsub('SPC', '<leader>')
   local opts = {
@@ -41,7 +40,7 @@ return {
   'goolord/alpha-nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   event = 'VimEnter',
-  config = function ()
+  config = function()
     local header = {
       type = 'text',
       val = AA,
@@ -72,7 +71,12 @@ return {
     }
     local opts = {
       layout = {
-        { type = 'padding', val = function() return math.floor(vim.o.lines * 0.25) end },
+        {
+          type = 'padding',
+          val = function()
+            return math.floor(vim.o.lines * 0.25)
+          end,
+        },
         header,
         { type = 'padding', val = 1 },
         message,
@@ -89,6 +93,6 @@ return {
       },
       opts = {},
     }
-    require'alpha'.setup(opts)
-  end
+    require('alpha').setup(opts)
+  end,
 }

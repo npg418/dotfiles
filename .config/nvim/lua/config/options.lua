@@ -49,4 +49,3 @@ vim.o.incsearch = true
 
 -- ステータスラインを常に表示
 vim.o.laststatus = 3
-
