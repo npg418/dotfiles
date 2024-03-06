@@ -27,7 +27,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     keys = {
-      { 'K', vim.lsp.hover },
+      { 'K', vim.lsp.buf.hover },
       { 'gf', vim.lsp.buf.format },
       { 'gr', vim.lsp.buf.references },
       { 'gd', vim.lsp.buf.definition },

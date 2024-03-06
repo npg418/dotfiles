@@ -1,81 +1,78 @@
----@diagnostic disable: missing-fields
+---@type LazySpec
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
     {
       'L3MON4D3/LuaSnip',
-      version = '2.*',
-      dependencies = {
-        'saadparwaiz1/cmp_luasnip',
-        'rafamadriz/friendly-snippets',
+      dependencies = 'rafamadriz/friendly-snippets',
+      opts = {
+        history = true,
+        updateevents = {
+          'TextChanged',
+          'TextChangedI',
+        },
       },
     },
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-nvim-lua',
     'hrsh7th/cmp-nvim-lsp',
-    'onsails/lspkind.nvim',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
   },
   config = function()
     local cmp = require('cmp')
-    local luasnip = require('luasnip')
-    local lspkind = require('lspkind')
-    require('luasnip.loaders.from_vscode').lazy_load()
-    luasnip.config.setup()
-
     cmp.setup({
       completion = {
-        completeopt = 'menu,menuone,noinsert',
+        completeopt = 'menu,menuone',
+      },
+      window = {
+        completion = {
+          scrollbar = false,
+        },
       },
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body)
+          require('luasnip').lsp_expand(args.body)
         end,
       },
-      mapping = cmp.mapping.preset.insert({
+      mapping = {
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
+          behavior = cmp.ConfirmBehavior.Insert,
           select = true,
         }),
-      }),
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif require('luasnip').expand_or_jumpable() then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif require('luasnip').jumpable(-1) then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
       },
-      sources = cmp.config.sources({
+      sources = {
         { name = 'nvim_lsp' },
-        {
-          name = 'buffer',
-          option = {
-            get_bufnrs = function()
-              return vim.api.nvim_list_bufs()
-            end,
-          },
-        },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+        { name = 'nvim_lua' },
         { name = 'path' },
-      }),
-      formatting = {
-        fields = { 'abbr', 'kind', 'menu' },
-        format = lspkind.cmp_format({
-          mode = 'symbol_text',
-          maxwidth = 50,
-          ellipsis_char = '...',
-          menu = {
-            buffer = '[Buffer]',
-            nvim_lsp = '[LSP]',
-            path = '[Path]',
-          },
-        }),
-      },
-      experimental = {
-        ghost_text = true,
       },
     })
-
-    vim.o.pumheight = 14
   end,
 }
