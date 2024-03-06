@@ -25,6 +25,8 @@ return {
     config = function()
       vim.cmd.colorscheme('hatsunemiku')
       vim.o.termguicolors = true
+      vim.cmd.highlight { 'link VertSplit NonText', bang = true }
+      vim.o.fillchars = 'eob: ,vert:┃'
     end,
   },
 }
