@@ -59,10 +59,12 @@ return {
       end
       mason_lspconfig.setup_handlers({
         function(server)
-          local config = {}
-          local avariable_custom, custom = pcall(require, 'servers.' .. server)
+          local config = {
+            capabilites = vim.lsp.protocol.make_client_capabilities(),
+          }
+          local avariable_custom, custom = pcall(require, 'plugins.servers.' .. server)
           if avariable_custom then
-            config = custom
+            config = vim.tbl_extend('force', config, custom)
           end
           local avariable_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
           if avariable_cmp then
@@ -72,12 +74,12 @@ return {
         end,
         tsserver = function()
           if not is_deno() then
-            lspconfig.tsserver.setup()
+            lspconfig.tsserver.setup({})
           end
         end,
         denols = function()
           if is_deno() then
-            lspconfig.denols.setup()
+            lspconfig.denols.setup({})
           end
         end,
       })
