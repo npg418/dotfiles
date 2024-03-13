@@ -18,7 +18,7 @@ vim.o.relativenumber = true
 vim.o.signcolumn = 'yes'
 
 -- クリップボードを共有
-vim.o.clipboard = 'unnamed,unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 
 -- インデント設定
 vim.o.expandtab = true
