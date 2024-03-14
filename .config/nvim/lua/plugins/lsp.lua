@@ -115,6 +115,21 @@ return {
     end,
   },
   {
+    'jmbuhr/otter.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local otter = require('otter')
+      otter.setup()
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'html',
+        once = true,
+        callback = function()
+          otter.activate({ 'css', 'javascript' }, true, true)
+        end,
+      })
+    end,
+  },
+  {
     'elentok/format-on-save.nvim',
     event = 'BufWritePre',
     opts = {},

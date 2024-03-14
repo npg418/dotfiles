@@ -72,6 +72,7 @@ return {
         { name = 'buffer' },
         { name = 'nvim_lua' },
         { name = 'path' },
+        { name = 'otter' }
       },
     })
   end,
