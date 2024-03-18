@@ -27,7 +27,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     keys = {
-      { 'K', vim.lsp.buf.hover },
+      { 'K',  vim.lsp.buf.hover },
       { 'gf', vim.lsp.buf.format },
       { 'gr', vim.lsp.buf.references },
       { 'gd', vim.lsp.buf.definition },
@@ -62,13 +62,9 @@ return {
           local config = {
             capabilites = vim.lsp.protocol.make_client_capabilities(),
           }
-          local avariable_custom, custom = pcall(require, 'plugins.servers.' .. server)
-          if avariable_custom then
-            config = vim.tbl_extend('force', config, custom)
-          end
           local avariable_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
           if avariable_cmp then
-            config.capabilites = cmp.default_capabilities()
+            config.capabilites = vim.tbl_deep_extend('force', config.capabilites, cmp.default_capabilities())
           end
           lspconfig[server].setup(config)
         end,
@@ -81,6 +77,26 @@ return {
           if is_deno() then
             lspconfig.denols.setup({})
           end
+        end,
+        lua_ls = function()
+          lspconfig.lua_ls.setup({
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { 'vim' },
+                },
+                workspace = {
+                  checkThirdParty = false,
+                },
+                telemetry = { enabled = false },
+              },
+            },
+          })
+        end,
+        powershell_es = function()
+          lspconfig.powershell_es.setup({
+            bundle_path = vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services',
+          })
         end,
       })
 
@@ -117,17 +133,11 @@ return {
   {
     'jmbuhr/otter.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-      local otter = require('otter')
-      otter.setup()
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = 'html',
-        once = true,
-        callback = function()
-          otter.activate({ 'css', 'javascript' }, true, true)
-        end,
-      })
-    end,
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'nvim-treesitter/nvim-treesitter'
+    },
+    opts = {},
   },
   {
     'elentok/format-on-save.nvim',
