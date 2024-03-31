@@ -6,7 +6,7 @@ return {
     priority = 1000,
     enabled = false,
     config = function()
-      vim.cmd.highlight('gruvbox')
+      vim.cmd.colorscheme('gruvbox')
     end,
   },
   {
@@ -15,7 +15,7 @@ return {
     priority = 1000,
     enabled = false,
     config = function()
-      vim.cmd.highlight('tokyonight')
+      vim.cmd.colorscheme('tokyonight')
     end,
   },
   {
