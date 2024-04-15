@@ -27,7 +27,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     keys = {
-      { 'K',  vim.lsp.buf.hover },
+      { 'K', vim.lsp.buf.hover },
       { 'gf', vim.lsp.buf.format },
       { 'gr', vim.lsp.buf.references },
       { 'gd', vim.lsp.buf.definition },
@@ -135,9 +135,22 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'neovim/nvim-lspconfig',
-      'nvim-treesitter/nvim-treesitter'
+      'nvim-treesitter/nvim-treesitter',
     },
-    opts = {},
+    config = function()
+      local otter = require('otter')
+      otter.setup({
+        buffers = {
+          set_filetype = true,
+        },
+      })
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'html',
+        callback = function()
+          otter.activate({ 'css', 'javascript' }, true, true)
+        end,
+      })
+    end,
   },
   {
     'elentok/format-on-save.nvim',

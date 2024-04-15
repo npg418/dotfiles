@@ -1,4 +1,3 @@
--- vim.g.ambiwidth_cica_enabled = false
 ---@type LazySpec
 return {
   'rbtnn/vim-ambiwidth',
