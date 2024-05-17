@@ -1,5 +1,6 @@
-require('config.lazynvim')
 require('config.options')
 require('config.keymap')
 require('config.terminal')
 require('config.misc')
+require('config.lazynvim')
+require('generated.colorscheme')
