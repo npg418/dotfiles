@@ -60,11 +60,11 @@ return {
       mason_lspconfig.setup_handlers({
         function(server)
           local config = {
-            capabilites = vim.lsp.protocol.make_client_capabilities(),
+            capabilities = vim.lsp.protocol.make_client_capabilities(),
           }
           local avariable_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
           if avariable_cmp then
-            config.capabilites = vim.tbl_deep_extend('force', config.capabilites, cmp.default_capabilities())
+            config.capabilities = vim.tbl_deep_extend('force', config.capabilities, cmp.default_capabilities())
           end
           lspconfig[server].setup(config)
         end,

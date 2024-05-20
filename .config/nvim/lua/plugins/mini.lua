@@ -13,6 +13,7 @@ end
 return {
   mini_module('indentscope', {
     event = 'VimEnter',
+    enabled = false,
     config = function()
       require('mini.indentscope').setup()
       vim.api.nvim_create_autocmd('FileType', {
