@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
   defaults = {
     lazy = true,
-    opt = {},
+    opts = {},
   },
   performance = {
     cache = {
