@@ -1,1 +1,1 @@
-vim.cmd.colorscheme('hatsunemiku')
+vim.cmd.colorscheme('tokyonight')
