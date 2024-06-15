@@ -1,27 +1,22 @@
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
 Set-Alias ral Remove-Alias
-Set-Alias code code-insiders
 Set-Alias zip Compress-Archive
 Set-Alias unzip Expand-Archive
 Set-Alias v nvim
 Set-Alias g git
 Set-Alias grep findstr
 
-if (Test-Path alias:ls)
-{
+if (Test-Path alias:ls) {
   Remove-Alias ls -Force
 }
-function ls
-{
+function ls {
   Invoke-Expression "eza --icons --git $args"
 }
-function ll
-{
+function ll {
   Invoke-Expression "ls --long --header --group $args"
 }
-function la
-{
+function la {
   Invoke-Expression "ll --all $args"
 }
 
@@ -39,8 +34,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 
 Import-Module ZLocation
 
-function Set-LocationToGitRoot
-{
+function Set-LocationToGitRoot {
   $GitRoot = git rev-parse --show-toplevel
   Set-Location $GitRoot
 }
@@ -49,3 +43,12 @@ Set-Alias cdgr Set-LocationToGitRoot
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 Import-Module PoShFuck
+Get-ChildItem "$PROFILE\..\Completions\" | ForEach-Object {
+    . $_.FullName
+}
+
+#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
+
+Import-Module -Name Microsoft.WinGet.CommandNotFound
+#f45873b3-b655-43a6-b217-97c00aa0db58
+
