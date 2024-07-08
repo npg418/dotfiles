@@ -1,5 +1,6 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
+  enabled = false,
   branch = 'v3.x',
   keys = {
     { '<C-n>', '<cmd>Neotree toggle reveal<CR>' },
