@@ -128,5 +128,6 @@
     "red": "#f7768e",
     "white": "#c0caf5",
     "yellow": "#e0af68"
-  }
+  },
+  "auto_upgrade": true
 }
