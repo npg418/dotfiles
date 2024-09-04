@@ -85,6 +85,8 @@ exe 'hi Todo guifg='s:fg'  gui=inverse,bold'
 exe 'hi Type guifg='s:type
 exe 'hi Underlined   gui=underline'
 
+exe 'hi NormalFloat guibg='s:bg
+
 " Neovim Terminal Mode
 let g:terminal_color_0 = s:bg
 let g:terminal_color_1 = s:warning
@@ -150,4 +152,9 @@ exe 'hi htmlSpecialTagName guifg='s:keyword
 " Markdown Highlighting
 exe 'hi mkdCode guifg='s:builtin
 
+" Diagnostic Line Highlighting
+exe 'hi DiagnosticErrorLine guibg=#651f14'
+exe 'hi DiagnosticWarnLine guibg=#4e462e'
+exe 'hi DiagnosticHintLine guibg=#294029'
+exe 'hi DiagnosticInfoLine guibg=#182c41'
 
