@@ -9,7 +9,6 @@ fzf
 bat
 z-git
 ripgrep
-tmux
 eza
-oh-my-posh
 thefuck
+neofetch

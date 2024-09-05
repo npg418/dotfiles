@@ -20,3 +20,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 
 eval $(thefuck --alias)
+
+# bun completions
+[ -s "/home/nullp/.bun/_bun" ] && source "/home/nullp/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
