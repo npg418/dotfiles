@@ -20,4 +20,10 @@ return {
       vim.o.fillchars = 'eob: ,vert:┃'
     end,
   },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    lazy = false,
+    priority = 1000,
+  },
 }

@@ -1,1 +1,1 @@
-vim.cmd.colorscheme('adachirei')
+vim.cmd.colorscheme('catppuccin-macchiato')
