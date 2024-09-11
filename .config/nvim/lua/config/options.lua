@@ -1,5 +1,6 @@
 -- エンコードはutf-8を使う
 vim.scriptencoding = 'utf-8'
+vim.o.encoding = 'utf-8'
 
 -- 2バイト文字を描画する
 -- vim.o.ambiwidth = 'double'
