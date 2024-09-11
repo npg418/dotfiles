@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt_local.number = false
     vim.opt_local.bufhidden = 'wipe'
     vim.opt_local.buflisted = false
+    vim.opt_local.fileencodings = 'utf-8'
     vim.cmd.startinsert()
   end,
 })
@@ -24,7 +25,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-vim.keymap.set('n', '<A-t>', ':split | wincmd j | exec "resize " . string(&lines * 0.35) | terminal<CR>')
+-- vim.keymap.set('n', '<A-t>', ':split | wincmd j | exec "resize " . string(&lines * 0.35) | terminal<CR>')
 vim.keymap.set('t', '<A-t>', '<C-c> exit<CR>:q<CR>')
 
 if vim.fn.executable('pwsh') == 1 then
