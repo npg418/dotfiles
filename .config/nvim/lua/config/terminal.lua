@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
 })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
--- vim.keymap.set('n', '<A-t>', ':split | wincmd j | exec "resize " . string(&lines * 0.35) | terminal<CR>')
+vim.keymap.set('n', '<A-t>', ':split | wincmd j | exec "resize " . string(&lines * 0.35) | terminal<CR>')
 vim.keymap.set('t', '<A-t>', '<C-c> exit<CR>:q<CR>')
 
 if vim.fn.executable('pwsh') == 1 then
