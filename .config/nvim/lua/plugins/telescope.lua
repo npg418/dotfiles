@@ -30,11 +30,11 @@ return {
       end,
     })
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
-    vim.keymap.set('n', '<leader>fc', builtin.colorscheme, {})
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Open file finder (telescope)' })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Open live grep (telescope)' })
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Open buffer swicher (telescope)' })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Open help tags viewer (telescope)' })
+    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Open keymaps viwer (telescope)' })
+    vim.keymap.set('n', '<leader>fc', builtin.colorscheme, { desc = 'Open colorscheme switcher (telescope)' })
   end,
 }

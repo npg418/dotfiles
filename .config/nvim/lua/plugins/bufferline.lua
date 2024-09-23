@@ -8,7 +8,7 @@ return {
   opts = {
     options = {
       indicator = {
-        style = 'none',
+        style = 'underline',
       },
       diagnostics = 'nvim_lsp',
       show_buffer_close_icons = false,

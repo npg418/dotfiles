@@ -36,10 +36,12 @@ local function button(sc, txt, keybind)
   }
 end
 
+---@type LazySpec
 return {
   'goolord/alpha-nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   event = 'VimEnter',
+  enabled = false,
   config = function()
     local header = {
       type = 'text',

@@ -125,4 +125,7 @@ return {
       vim.o.showmode = false
     end,
   }),
+  mini_module('icons', {
+    event = 'VeryLazy'
+  })
 }

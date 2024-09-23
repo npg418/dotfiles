@@ -27,7 +27,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     keys = {
-      { 'K', vim.lsp.buf.hover },
+      { 'K',  vim.lsp.buf.hover },
       { 'gf', vim.lsp.buf.format },
       { 'gr', vim.lsp.buf.references },
       { 'gd', vim.lsp.buf.definition },
@@ -68,7 +68,7 @@ return {
           end
           lspconfig[server].setup(config)
         end,
-        tsserver = function()
+        ts_ls = function()
           if not is_deno() then
             lspconfig.tsserver.setup({})
           end

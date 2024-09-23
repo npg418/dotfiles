@@ -27,7 +27,7 @@ local opts = {
     notify = false,
   },
   install = {
-    colorscheme = { 'adachirei' },
+    colorscheme = { 'catppuccin-macchiato' },
   },
   ui = {
     border = 'single',
