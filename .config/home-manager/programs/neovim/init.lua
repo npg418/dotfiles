@@ -40,3 +40,4 @@ vim.api.nvim_create_autocmd("BufLeave", {
     end
   end,
 })
+vim.keymap.set("ca", "wqa", "wa|qa")
