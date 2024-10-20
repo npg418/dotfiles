@@ -32,15 +32,13 @@ lspconfig.efm.setup({
   },
 })
 
-local augroup = vim.api.nvim_create_augroup("lsp", {})
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = augroup,
   callback = function(e)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Jump on the references (Neovim builtin)" })
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Jump on the definition (Neovim builtin)" })
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Jump on the declaration (Neovim builtin)" })
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Jump on the implementation (Neovim builtin)" })
-    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "Jump on the type definition (Neovim builtin)" })
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Jump to the references (Neovim builtin)" })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Jump to the definition (Neovim builtin)" })
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Jump to the declaration (Neovim builtin)" })
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Jump to the implementation (Neovim builtin)" })
+    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "Jump to the type definition (Neovim builtin)" })
     vim.keymap.set("n", "gf", vim.lsp.buf.format, { desc = "Format current file (Neovim builtin)" })
     vim.keymap.set("n", "gn", vim.lsp.buf.rename, { desc = "Rename symbol under cursor (Neovim builtin)" })
     vim.keymap.set("n", "g.", vim.lsp.buf.code_action, { desc = "Do code action under cursor (Neovim builtin)" })
@@ -55,11 +53,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     local client = vim.lsp.get_client_by_id(e.data.client_id)
     if client ~= nil and client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = e.bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
         buffer = e.bufnr,
-        callback = vim.lsp.buf.format,
+        callback = function()
+          vim.lsp.buf.format()
+        end,
       })
     end
   end,
