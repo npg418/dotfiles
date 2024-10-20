@@ -3,7 +3,7 @@
 {
   programs.zsh = {
     enable = true;
-    defaultKeymap = "viins";
+    defaultKeymap = "emacs";
     dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
     autocd = true;
