@@ -43,7 +43,7 @@ in
       nvim-treesitter.withAllGrammars
       plenary-nvim
       {
-        plugin = nvim-lspconfig;
+        plugin = fromGitHub "neovim/nvim-lspconfig";
         config = builtins.readFile ./lspconfig.lua;
         type = "lua";
       }
