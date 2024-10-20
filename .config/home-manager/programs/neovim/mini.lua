@@ -154,3 +154,16 @@ MiniSessions.setup({
 })
 
 vim.ui.select = MiniPick.ui_select
+
+-- tabline setup reference: https://github.com/debugloop/dotfiles/blob/main/home/nvim/lua/plugins.lua#L889
+MiniTabline.setup({
+  format = function(buf_id, label)
+    local suffix = ""
+    if vim.bo[buf_id].modified then
+      suffix = "● "
+    elseif vim.bo[buf_id].readonly then
+      suffix = " "
+    end
+    return MiniTabline.default_format(buf_id, label) .. suffix
+  end,
+})
