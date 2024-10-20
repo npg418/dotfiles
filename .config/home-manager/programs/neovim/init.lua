@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   end,
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "qf",
+  pattern = { "qf", "checkhealth" },
   callback = function()
     vim.opt_local.buflisted = false
   end,
