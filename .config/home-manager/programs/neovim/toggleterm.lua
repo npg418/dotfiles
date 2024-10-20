@@ -10,4 +10,7 @@ require("toggleterm").setup({
   persist_size = true,
   direction = "float",
   close_on_exit = true,
+  on_create = function()
+    vim.b.miniindentscope_disable = true
+  end,
 })
