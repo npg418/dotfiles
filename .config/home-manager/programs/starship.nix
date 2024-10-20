@@ -15,15 +15,39 @@ in
     enable = true;
     settings = {
       palette = "catppuccin_mocha";
-      character = {
-        success_symbol = "[[󰄛](green) ❯](peach)";
-        error_symbol = "[[󰄛](red) ❯](peach)";
-        vimcmd_symbol = "[󰄛 ❮](subtext1)";
-      };
-      git_branch.style = "bold mauve";
+      # format reference: https://starship.rs/presets/tokyo-night
+      format = ''
+        [░▒▓](rosewater)[ 󰄛 ](bg:rosewater fg:surface1)[](bg:mauve fg:rosewater)$directory[](fg:mauve bg:maroon)$git_branch$git_status[](fg:maroon bg:green)$time[](fg:green)
+        $character
+      '';
       directory = {
+        style = "fg:surface1 bg:mauve";
+        format = "[ $path $read_only ]($style)";
+        read_only = "󰌾";
+        repo_root_format = "[  $repo_root]($repo_root_style $style)[$path $read_only]($style)";
+        repo_root_style = "bold";
         truncation_length = 4;
-        style = "bold lavender";
+        truncation_symbol = "…󰉓 /";
+      };
+      git_branch = {
+        symbol = "";
+        style = "bg:maroon";
+        format = "[[ $symbol $branch ](fg:surface1 bg:maroon)]($style)";
+      };
+      git_status = {
+        style = "bg:maroon";
+        format = "[[(\\[$all_status$ahead_behind\\] )](fg:surface1 bg:maroon)]($style)";
+      };
+      time = {
+        disabled = false;
+        time_format = "%R";
+        style = "bg:green";
+        format = "[[  $time ](fg:surface1 bg:green)]($style)";
+      };
+      character = {
+        success_symbol = "[ ❯](green)";
+        error_symbol = "[ ❯](red)";
+        vimcmd_symbol = "[ ❮](subtext0)";
       };
     } // theme-catppuccin-mocha;
   };
