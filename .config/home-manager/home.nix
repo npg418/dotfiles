@@ -60,6 +60,7 @@
     ./programs/starship.nix
     ./programs/git.nix
     ./programs/gh.nix
+    ./programs/eza.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -67,6 +68,10 @@
   home.packages = with pkgs; [
     ripgrep
     neofetch
+    zip
+    unzip
+    dnsutils
+    cowsay
   ];
 
   programs.zoxide.enable = true;
