@@ -59,12 +59,17 @@
     ./programs/zsh.nix
     ./programs/starship.nix
     ./programs/git.nix
+    ./programs/gh.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [ gh ];
+  home.packages = with pkgs; [
+    ripgrep
+    neofetch
+  ];
 
   programs.zoxide.enable = true;
+  programs.thefuck.enable = true;
 
 }
