@@ -14,3 +14,9 @@ require("toggleterm").setup({
     vim.b.miniindentscope_disable = true
   end,
 })
+
+vim.api.nvim_create_autocmd("TermEnter", {
+  callback = function()
+    vim.cmd.wall()
+  end,
+})
