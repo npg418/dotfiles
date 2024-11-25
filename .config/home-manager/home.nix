@@ -76,5 +76,4 @@
 
   programs.zoxide.enable = true;
   programs.thefuck.enable = true;
-
 }

@@ -80,36 +80,36 @@ MiniClue.setup({
   delay = 200,
 })
 
-MiniCompletion.setup({
-  fallback_action = function()
-    if vim.api.nvim_get_option_value("omnifunc", {}) == "" then
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x><C-k>", true, true, true), "n", false)
-    else
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x><C-o>", true, true, true), "n", false)
-    end
-  end,
-})
-vim.keymap.set(
-  "i",
-  "<Tab>",
-  [[pumvisible() ? "\<C-n>" : "<Tab>"]],
-  { expr = true, desc = "Select next candidate (mini.completion)" }
-)
-vim.keymap.set(
-  "i",
-  "<S-Tab>",
-  [[pumvisible() ? "\<C-p>" : "<Tab>"]],
-  { expr = true, desc = "Select previous candidate (mini.completion)" }
-)
-vim.keymap.set("i", "<CR>", function()
-  if vim.fn.pumvisible() == 0 then
-    return MiniPairs.cr()
-  elseif vim.fn.complete_info()["selected"] ~= -1 then
-    return vim.api.nvim_replace_termcodes("<C-y>", true, true, true)
-  else
-    return vim.api.nvim_replace_termcodes("<C-y><CR>", true, true, true)
-  end
-end, { expr = true, desc = "Confirm candidate (mini.completion)" })
+-- MiniCompletion.setup({
+--   fallback_action = function()
+--     if vim.api.nvim_get_option_value("omnifunc", {}) == "" then
+--       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x><C-k>", true, true, true), "n", false)
+--     else
+--       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x><C-o>", true, true, true), "n", false)
+--     end
+--   end,
+-- })
+-- vim.keymap.set(
+--   "i",
+--   "<Tab>",
+--   [[pumvisible() ? "\<C-n>" : "<Tab>"]],
+--   { expr = true, desc = "Select next candidate (mini.completion)" }
+-- )
+-- vim.keymap.set(
+--   "i",
+--   "<S-Tab>",
+--   [[pumvisible() ? "\<C-p>" : "<Tab>"]],
+--   { expr = true, desc = "Select previous candidate (mini.completion)" }
+-- )
+-- vim.keymap.set("i", "<CR>", function()
+--   if vim.fn.pumvisible() == 0 then
+--     return MiniPairs.cr()
+--   elseif vim.fn.complete_info()["selected"] ~= -1 then
+--     return vim.api.nvim_replace_termcodes("<C-y>", true, true, true)
+--   else
+--     return vim.api.nvim_replace_termcodes("<C-y><CR>", true, true, true)
+--   end
+-- end, { expr = true, desc = "Confirm candidate (mini.completion)" })
 
 vim.keymap.set("n", "<C-n>", MiniFiles.open, { desc = "Open file explorer (mini.files)" })
 

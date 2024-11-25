@@ -1,6 +1,9 @@
 local lspconfig = require("lspconfig")
+local coq = require("coq")
 
-lspconfig.lua_ls.setup({
+local servers = {}
+
+servers.lua_ls = {
   settings = {
     Lua = {
       completion = {
@@ -8,9 +11,9 @@ lspconfig.lua_ls.setup({
       },
     },
   },
-})
+}
 
-lspconfig.nil_ls.setup({})
+servers.nil_ls = {}
 
 local languages = {
   lua = {
@@ -20,7 +23,7 @@ local languages = {
     { formatCommand = "nixfmt", formatStdin = true },
   },
 }
-lspconfig.efm.setup({
+servers.efm = {
   filetypes = vim.tbl_keys(languages),
   init_options = {
     documentFormatting = true,
@@ -30,7 +33,11 @@ lspconfig.efm.setup({
     rootMarkers = { ".git/" },
     languages = languages,
   },
-})
+}
+
+for name, config in pairs(servers) do
+  lspconfig[name].setup(coq.lsp_ensure_capabilities(config))
+end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(e)
