@@ -28,6 +28,9 @@ in
       nvim-treesitter.withAllGrammars
       plenary-nvim
       (withConfig neodev-nvim ./neodev.lua)
+      (withConfig coq_nvim ./coq.lua)
+      coq-artifacts
+      (withConfig coq-thirdparty ./coq-thirdparty.lua)
       (withConfig nvim-lspconfig ./lspconfig.lua)
       (withConfig catppuccin-nvim ./catppuccin.lua)
       (withConfig (fromGitHub "echasnovski/mini.nvim") ./mini.lua)
@@ -36,8 +39,6 @@ in
       (withConfig toggleterm-nvim ./toggleterm.lua)
       (fromGitHub "willelz/neovimdoc-ja")
       (withConfig lazygit-nvim ./lazygit.lua)
-      (withConfig coq_nvim ./coq.lua)
-      coq-artifacts
     ];
     extraLuaConfig = builtins.readFile ./init.lua;
     extraPackages = with pkgs; [
