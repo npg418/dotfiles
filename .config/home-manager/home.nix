@@ -77,6 +77,7 @@
   programs.zoxide.enable = true;
   programs.thefuck.enable = true;
 
+  nix.package = pkgs.nix;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
