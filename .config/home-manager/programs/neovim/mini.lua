@@ -8,7 +8,7 @@ local modules = {
   "clue",
   "colors",
   "comment",
-  "completion",
+  -- "completion",
   "cursorword",
   "diff",
   "extra",
