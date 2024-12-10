@@ -30,10 +30,10 @@ in
       (withConfig neodev-nvim ./neodev.lua)
       (withConfig coq_nvim ./coq.lua)
       coq-artifacts
-      (withConfig coq-thirdparty ./coq-thirdparty.lua)
+      # (withConfig coq-thirdparty ./coq-thirdparty.lua)
       (withConfig nvim-lspconfig ./lspconfig.lua)
       (withConfig catppuccin-nvim ./catppuccin.lua)
-      (withConfig (fromGitHub "echasnovski/mini.nvim") ./mini.lua)
+      (withConfig mini-nvim ./mini.lua)
       (withConfig (fromGitHub "vim-jp/vimdoc-ja") ./vimdoc-ja.lua)
       efmls-configs-nvim
       (withConfig toggleterm-nvim ./toggleterm.lua)

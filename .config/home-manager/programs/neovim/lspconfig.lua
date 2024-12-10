@@ -1,5 +1,4 @@
 local lspconfig = require("lspconfig")
-local coq = require("coq")
 
 local servers = {}
 
@@ -35,8 +34,9 @@ servers.efm = {
   },
 }
 
+local has_coq, coq = pcall(require, "coq")
 for name, config in pairs(servers) do
-  lspconfig[name].setup(coq.lsp_ensure_capabilities(config))
+  lspconfig[name].setup(has_coq and coq.lsp_ensure_capabilities(config) or config)
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
