@@ -27,7 +27,8 @@ in
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       plenary-nvim
-      (withConfig neodev-nvim ./neodev.lua)
+      # (withConfig neodev-nvim ./neodev.lua)
+      (withConfig lazydev-nvim ./lazydev.lua)
       (withConfig coq_nvim ./coq.lua)
       coq-artifacts
       # (withConfig coq-thirdparty ./coq-thirdparty.lua)
