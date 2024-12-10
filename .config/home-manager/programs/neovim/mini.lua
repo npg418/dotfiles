@@ -124,26 +124,26 @@ MiniHipatterns.setup({
   },
 })
 
-MiniMap.setup({
-  symbols = {
-    encode = MiniMap.gen_encode_symbols.dot("4x2"),
-  },
-  window = {
-    width = 20,
-  },
-  integrations = {
-    MiniMap.gen_integration.diagnostic({
-      error = "DiagnosticFloatingError",
-      warn = "DiagnosticFloatingWarn",
-      info = "DiagnosticFloatingInfo",
-      hint = "DiagnosticFloatingHint",
-    }),
-  },
-})
-vim.api.nvim_create_autocmd("VimEnter", {
-  once = true,
-  callback = MiniMap.open,
-})
+-- MiniMap.setup({
+--   symbols = {
+--     encode = MiniMap.gen_encode_symbols.dot("4x2"),
+--   },
+--   window = {
+--     width = 20,
+--   },
+--   integrations = {
+--     MiniMap.gen_integration.diagnostic({
+--       error = "DiagnosticFloatingError",
+--       warn = "DiagnosticFloatingWarn",
+--       info = "DiagnosticFloatingInfo",
+--       hint = "DiagnosticFloatingHint",
+--     }),
+--   },
+-- })
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   once = true,
+--   callback = MiniMap.open,
+-- })
 
 MiniNotify.setup()
 vim.notify = MiniNotify.make_notify()
