@@ -1,1 +1,5 @@
-require("lazydev").setup({})
+require("lazydev").setup({
+  integrations = {
+    coq = true,
+  },
+})
