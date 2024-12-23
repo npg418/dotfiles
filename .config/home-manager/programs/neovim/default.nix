@@ -2,13 +2,15 @@
 
 let
   fromGitHub =
-    repo:
+    owner: repo: hash:
     pkgs.vimUtils.buildVimPlugin {
-      pname = "${lib.strings.sanitizeDerivationName repo}";
-      version = "HEAD";
-      src = builtins.fetchGit {
-        url = "https://github.com/${repo}.git";
-        ref = "HEAD";
+      pname = lib.strings.sanitizeDerivationName owner + "/" + repo;
+      version = "fromGitHub";
+      src = pkgs.fetchFromGitHub {
+        inherit owner;
+        inherit repo;
+        rev = "HEAD";
+        inherit hash;
       };
     };
   withConfig = plugin: configFile: {
@@ -35,10 +37,12 @@ in
       (withConfig nvim-lspconfig ./lspconfig.lua)
       (withConfig catppuccin-nvim ./catppuccin.lua)
       (withConfig mini-nvim ./mini.lua)
-      (withConfig (fromGitHub "vim-jp/vimdoc-ja") ./vimdoc-ja.lua)
+      (withConfig (fromGitHub "vim-jp" "vimdoc-ja"
+        "sha256-q2TPqTOzV4Wngdhr4yrGsyKEod535SMU8fp5X8Ioch4="
+      ) ./vimdoc-ja.lua)
       efmls-configs-nvim
       (withConfig toggleterm-nvim ./toggleterm.lua)
-      (fromGitHub "willelz/neovimdoc-ja")
+      (fromGitHub "willelz" "neovimdoc-ja" "sha256-sqig96jiu4ljAhwIyqZW0q+s90zK5AplNIO3elc/1Po=")
       (withConfig lazygit-nvim ./lazygit.lua)
     ];
     extraLuaConfig = builtins.readFile ./init.lua;

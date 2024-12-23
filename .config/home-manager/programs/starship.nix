@@ -1,14 +1,12 @@
 { ... }:
 let
-  moz-overlay = import (
-    builtins.fetchTarball "https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz"
-  );
-  nixpkgs = import <nixpkgs> { overlays = [ moz-overlay ]; };
-
   theme-catppuccin-mocha-toml = builtins.readFile (
-    builtins.fetchurl "https://raw.githubusercontent.com/catppuccin/starship/refs/heads/main/themes/mocha.toml"
+    builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/catppuccin/starship/refs/heads/main/themes/mocha.toml";
+      sha256 = "170zl263qd4542ccfqrfcn10qvppafbsnxs5vbfxx4yv4ynrj9ki";
+    }
   );
-  theme-catppuccin-mocha = nixpkgs.lib.fromTOML theme-catppuccin-mocha-toml;
+  theme-catppuccin-mocha = fromTOML theme-catppuccin-mocha-toml;
 in
 {
   programs.starship = {
