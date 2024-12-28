@@ -18,6 +18,10 @@
     ./programs/eza.nix
   ];
 
+  programs.zoxide.enable = true;
+  programs.thefuck.enable = true;
+  programs.lazygit.enable = true;
+
   home.packages = with pkgs; [
     ripgrep
     neofetch
@@ -25,11 +29,7 @@
     unzip
     dnsutils
     cowsay
-    lazygit
   ];
-
-  programs.zoxide.enable = true;
-  programs.thefuck.enable = true;
 
   nix = {
     package = pkgs.nix;
