@@ -25,7 +25,8 @@
             }
           else
             { }
-        );
+        )
+        // (if config.programs.lazygit.enable then { lg = "lazygit"; } else { });
     };
     envExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
