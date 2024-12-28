@@ -25,6 +25,7 @@
     unzip
     dnsutils
     cowsay
+    lazygit
   ];
 
   programs.zoxide.enable = true;
