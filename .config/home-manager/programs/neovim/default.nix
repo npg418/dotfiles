@@ -2,16 +2,11 @@
 
 let
   fromGitHub =
-    owner: repo: hash:
+    { owner, repo, ... }@spec:
     pkgs.vimUtils.buildVimPlugin {
       pname = lib.strings.sanitizeDerivationName owner + "/" + repo;
       version = "fromGitHub";
-      src = pkgs.fetchFromGitHub {
-        inherit owner;
-        inherit repo;
-        rev = "HEAD";
-        inherit hash;
-      };
+      src = pkgs.fetchFromGitHub spec;
     };
   withConfig = plugin: configFile: {
     inherit plugin;
@@ -37,12 +32,20 @@ in
       (withConfig nvim-lspconfig ./lspconfig.lua)
       (withConfig catppuccin-nvim ./catppuccin.lua)
       (withConfig mini-nvim ./mini.lua)
-      (withConfig (fromGitHub "vim-jp" "vimdoc-ja"
-        "sha256-q2TPqTOzV4Wngdhr4yrGsyKEod535SMU8fp5X8Ioch4="
-      ) ./vimdoc-ja.lua)
+      (withConfig (fromGitHub {
+        owner = "vim-jp";
+        repo = "vimdoc-ja";
+        rev = "e0eddbe28ab12ea331cd4935fc7387429a689575";
+        sha256 = "sha256-cOGbHdUgmFyMKdnzPFP6XNiHFI/XIAgbuQBWC+Cq9QA=";
+      }) ./vimdoc-ja.lua)
       efmls-configs-nvim
       (withConfig toggleterm-nvim ./toggleterm.lua)
-      (fromGitHub "willelz" "neovimdoc-ja" "sha256-sqig96jiu4ljAhwIyqZW0q+s90zK5AplNIO3elc/1Po=")
+      (fromGitHub {
+        owner = "willelz";
+        repo = "neovimdoc-ja";
+        rev = "c1374d46a4bb77c0f9f50d1c8f781e2beb7a539d";
+        sha256 = "sha256-sqig96jiu4ljAhwIyqZW0q+s90zK5AplNIO3elc/1Po=";
+      })
       (withConfig lazygit-nvim ./lazygit.lua)
     ];
     extraLuaConfig = builtins.readFile ./init.lua;
