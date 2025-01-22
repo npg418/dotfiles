@@ -47,6 +47,7 @@ in
         sha256 = "sha256-sqig96jiu4ljAhwIyqZW0q+s90zK5AplNIO3elc/1Po=";
       })
       (withConfig lazygit-nvim ./lazygit.lua)
+      (withConfig vim-suda ./suda.lua)
     ];
     extraLuaConfig = builtins.readFile ./init.lua;
     extraPackages = with pkgs; [
