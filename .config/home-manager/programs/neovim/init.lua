@@ -40,5 +40,5 @@ vim.api.nvim_create_autocmd("BufLeave", {
     end
   end,
 })
-vim.cmd.cnoreabbrev("wqa wa|qa")
+vim.keymap.set("ca", "wqa", "wa|qa")
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
