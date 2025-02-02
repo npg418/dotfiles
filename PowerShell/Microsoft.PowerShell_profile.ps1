@@ -20,7 +20,6 @@ function la {
   Invoke-Expression "ll --all $args"
 }
 
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\npg418.omp.json" | Invoke-Expression
 Import-Module posh-git
 $env:POSH_GIT_ENABLED = $true
 
@@ -44,9 +43,14 @@ Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 Import-Module PoShFuck
 Get-ChildItem "$PROFILE\..\Completions\" | ForEach-Object {
-    . $_.FullName
+  . $_.FullName
 }
 
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 
-if (Test-Path "C:\Users\nullp\.jabba\jabba.ps1") { . "C:\Users\nullp\.jabba\jabba.ps1" }
+if (Test-Path "$env:USERPROFILE\.jabba\jabba.ps1") {
+  . "$env:USERPROFILE\.jabba\jabba.ps1"
+  jabba use default
+}
+
+Invoke-Expression (&starship init powershell)
