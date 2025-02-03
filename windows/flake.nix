@@ -25,14 +25,19 @@
         required-packages = nixpkgs.lib.strings.concatMapStringsSep " " (name: "\"${name}\"") package-names;
       in
       {
-        packages.default = pkgs.writeScriptBin "generate" (
-          builtins.replaceStrings [ "##required_packages##" ] [ "(${required-packages})" ] (
-            builtins.readFile ./generate.bash
-          )
-        );
+        packages = rec {
+          generate-package-map = pkgs.writeScriptBin "generate-package-map" (
+            builtins.replaceStrings [ "##required_packages##" ] [ "(${required-packages})" ] (
+              builtins.readFile ./generate-package-map.bash
+            )
+          );
+          default = pkgs.writeScriptBin "home-windows" ''
+            ${generate-package-map}/bin/generate-package-map
+          '';
+        };
         apps.default = {
           type = "app";
-          program = "${self.packages.${system}.default}/bin/generate";
+          program = "${self.packages.${system}.default}/bin/home-windows";
         };
       }
     );
