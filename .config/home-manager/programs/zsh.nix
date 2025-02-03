@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -15,18 +15,14 @@
         {
           hm = "home-manager";
         }
-        // (if config.programs.neovim.enable then { v = "nvim"; } else { })
-        // (
-          if config.programs.eza.enable then
-            {
-              ls = "eza";
-              ll = "eza -hlg";
-              la = "eza -hlga";
-            }
-          else
-            { }
-        )
-        // (if config.programs.lazygit.enable then { lg = "lazygit"; } else { });
+        // lib.optionalAttrs config.programs.neovim.enable { v = "nvim"; }
+        // lib.optionalAttrs config.programs.eza.enable {
+          ls = "eza";
+          ll = "eza -hlg";
+          la = "eza -hlga";
+        }
+        // lib.optionalAttrs config.programs.lazygit.enable { lg = "lazygit"; }
+        // lib.optionalAttrs config.programs.git.enable { cdg = "cd $(git rev-parse --show-toplevel)"; };
     };
     envExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
