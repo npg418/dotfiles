@@ -48,6 +48,7 @@ in
       })
       (withConfig lazygit-nvim ./lazygit.lua)
       (withConfig vim-suda ./suda.lua)
+      (withConfig lsp-format-nvim ./lsp-format.lua)
     ];
     extraLuaConfig = builtins.readFile ./init.lua;
     extraPackages = with pkgs; [
@@ -58,6 +59,8 @@ in
       lua-language-server
       stylua
       lazygit
+      bash-language-server
+      beautysh
     ];
   };
 }

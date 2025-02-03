@@ -21,6 +21,9 @@ local languages = {
   nix = {
     { formatCommand = "nixfmt", formatStdin = true },
   },
+  sh = {
+    require("efmls-configs.formatters.beautysh"),
+  },
 }
 servers.efm = {
   filetypes = vim.tbl_keys(languages),
@@ -34,13 +37,31 @@ servers.efm = {
   },
 }
 
+servers.bashls = {}
+
 local has_coq, coq = pcall(require, "coq")
+if has_coq then
+  for name, config in pairs(servers) do
+    servers[name] = coq.lsp_ensure_capabilities(config)
+  end
+end
+
+local has_lsp_format, lsp_format = pcall(require, "lsp-format")
+if has_lsp_format then
+  for name, config in pairs(servers) do
+    servers[name].on_attach = function(client, bufnr)
+      config.on_attach(client, bufnr)
+      lsp_format.on_attach(client, bufnr)
+    end
+  end
+end
+
 for name, config in pairs(servers) do
-  lspconfig[name].setup(has_coq and coq.lsp_ensure_capabilities(config) or config)
+  lspconfig[name].setup(config)
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(e)
+  callback = function()
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Jump to the references (Neovim builtin)" })
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Jump to the definition (Neovim builtin)" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Jump to the declaration (Neovim builtin)" })
@@ -53,15 +74,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "Open diagnostic float (Neovim builtin)" })
     vim.keymap.set("n", "g]", vim.diagnostic.goto_next, { desc = "Goto next diagnostic (Neovim builtin)" })
     vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic (Neovim builtin)" })
-
-    local client = vim.lsp.get_client_by_id(e.data.client_id)
-    if client ~= nil and client.supports_method("textDocument/formatting") then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = e.bufnr,
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
-    end
   end,
 })
