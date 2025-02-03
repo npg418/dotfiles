@@ -21,7 +21,7 @@ local languages = {
     require("efmls-configs.formatters.stylua"),
   },
   nix = {
-    { formatCommand = "nixfmt", formatStdin = true },
+    require("efmls-configs.formatters.nixfmt"),
   },
   sh = {
     require("efmls-configs.formatters.beautysh"),
