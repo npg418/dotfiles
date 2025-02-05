@@ -16,6 +16,7 @@
     ./programs/git.nix
     ./programs/gh.nix
     ./programs/eza.nix
+    ./programs/direnv.nix
   ];
 
   programs.zoxide.enable = true;
