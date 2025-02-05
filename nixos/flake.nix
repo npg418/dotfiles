@@ -17,6 +17,7 @@
             ];
             shell = pkgs.zsh;
           };
+          environment.pathsToLink = [ "/share/zsh" ];
           nix.settings.experimental-features = [
             "nix-command"
             "flakes"
