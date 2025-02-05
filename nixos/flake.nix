@@ -22,5 +22,16 @@
             "flakes"
           ];
         };
+      # `nix-community/NixOS-WSL` と併用
+      nixosModules.wsl =
+        { pkgs, ... }:
+        {
+          wsl.enable = true;
+          wsl.defaultUser = "nullp";
+          environment.systemPackages = [ pkgs.wslu ];
+          environment.variables = {
+            WSLROOT = "/mnt/c/Users/nullp/";
+          };
+        };
     };
 }
