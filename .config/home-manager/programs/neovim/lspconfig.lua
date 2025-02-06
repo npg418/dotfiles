@@ -16,9 +16,12 @@ servers.nil_ls = {}
 
 servers.bashls = {}
 
+servers.markdown_oxide = {}
+
 local stylua = require("efmls-configs.formatters.stylua")
 local nixfmt = require("efmls-configs.formatters.nixfmt")
 local beautysh = require("efmls-configs.formatters.beautysh")
+local markdownlint = require("efmls-configs.linters.markdownlint")
 local languages = {
   lua = {
     stylua,
@@ -29,10 +32,13 @@ local languages = {
   sh = {
     vim.tbl_extend("force", beautysh, {
       formatCommand = beautysh.formatCommand
-          .. " --indent-size "
-          .. vim.o.shiftwidth
-          .. " --force-function-style fnpar",
+        .. " --indent-size "
+        .. vim.o.shiftwidth
+        .. " --force-function-style fnpar",
     }),
+  },
+  markdown = {
+    markdownlint,
   },
 }
 local has_lsp_format, lsp_format = pcall(require, "lsp-format")
