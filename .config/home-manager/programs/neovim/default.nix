@@ -43,6 +43,7 @@ in
       (withConfig lazygit-nvim ./lazygit.lua)
       (withConfig vim-suda ./suda.lua)
       (withConfig lsp-format-nvim ./lsp-format.lua)
+      (withConfig hardtime-nvim ./hardtime.lua)
     ];
     extraLuaConfig = builtins.readFile ./init.lua;
     extraPackages = with pkgs; [
