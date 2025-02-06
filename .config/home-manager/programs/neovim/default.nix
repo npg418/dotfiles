@@ -35,17 +35,11 @@ in
       (withConfig (fromGitHub {
         owner = "vim-jp";
         repo = "vimdoc-ja";
-        rev = "e0eddbe28ab12ea331cd4935fc7387429a689575";
-        sha256 = "sha256-cOGbHdUgmFyMKdnzPFP6XNiHFI/XIAgbuQBWC+Cq9QA=";
+        rev = "b1d774c43e74dc45d03f1880c9e83f8aaa5f1a0d";
+        sha256 = "sha256-xXCXMxApPGyUODV9MK1H3qvFGpGvJe78ZarG1MHFhY0=";
       }) ./vimdoc-ja.lua)
       efmls-configs-nvim
       (withConfig toggleterm-nvim ./toggleterm.lua)
-      (fromGitHub {
-        owner = "willelz";
-        repo = "neovimdoc-ja";
-        rev = "c1374d46a4bb77c0f9f50d1c8f781e2beb7a539d";
-        sha256 = "sha256-sqig96jiu4ljAhwIyqZW0q+s90zK5AplNIO3elc/1Po=";
-      })
       (withConfig lazygit-nvim ./lazygit.lua)
       (withConfig vim-suda ./suda.lua)
       (withConfig lsp-format-nvim ./lsp-format.lua)
@@ -61,6 +55,7 @@ in
       lazygit
       bash-language-server
       beautysh
+      markdown-oxide
     ];
   };
 }
