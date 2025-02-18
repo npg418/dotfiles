@@ -37,7 +37,7 @@
                   vim.api.nvim_echo({
                     { "An error occurred while switching home manager profile.\n", "ErrorMsg" },
                     { "Press any key to continue...", "WarningMsg" },
-                  })
+                  }, true, {})
                   vim.fn.getchar()
                 end
               end,

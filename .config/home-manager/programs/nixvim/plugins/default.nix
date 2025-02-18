@@ -13,5 +13,6 @@
     ./suda.nix
     ./lsp-format.nix
     ./care.nix
+    ./luasnip.nix
   ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, nixvim, ... }:
+{ nixvim, pkgs, lib, config, ... }:
 {
   programs.nixvim = {
     extraPlugins = [
@@ -30,6 +30,11 @@
       end
 
       care.setup({
+        ${lib.optionalString config.programs.nixvim.plugins.luasnip.enable ''
+          snippet_expansion = function(body)
+            require("luasnip").lsp_expand(body)
+          end,
+        ''}
         ui = {
           ghost_text = {
             enabled = true,
