@@ -22,12 +22,14 @@
       })
     ];
     extraConfigLua = ''
+      local care = require("care")
+
       local labels = {}
       for i=1,9 do
         labels[i] = tostring(i)
       end
 
-      require("care").setup({
+      care.setup({
         ui = {
           ghost_text = {
             enabled = true,
@@ -50,7 +52,17 @@
             end,
           },
         },
+        scrollbar = {
+          enabled = true,
+        },
       })
+
+      for i, label in ipairs(labels) do
+        vim.keymap.set("i", "<C-" .. label .. ">", function()
+          care.api.select_visible(i)
+          care.api.confirm()
+        end)
+      end
     '';
     keymaps = [
       {
