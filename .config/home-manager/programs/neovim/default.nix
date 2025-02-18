@@ -24,6 +24,7 @@ in
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       plenary-nvim
+      # (withConfig hardtime-nvim ./hardtime.lua)
       # (withConfig neodev-nvim ./neodev.lua)
       (withConfig lazydev-nvim ./lazydev.lua)
       (withConfig coq_nvim ./coq.lua)
@@ -43,7 +44,6 @@ in
       (withConfig lazygit-nvim ./lazygit.lua)
       (withConfig vim-suda ./suda.lua)
       (withConfig lsp-format-nvim ./lsp-format.lua)
-      (withConfig hardtime-nvim ./hardtime.lua)
     ];
     extraLuaConfig = builtins.readFile ./init.lua;
     extraPackages = with pkgs; [

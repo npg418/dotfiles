@@ -10,7 +10,8 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./programs/neovim
+    # ./programs/neovim
+    ./programs/nixvim
     ./programs/zsh.nix
     ./programs/starship.nix
     ./programs/git.nix
