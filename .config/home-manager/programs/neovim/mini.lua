@@ -111,7 +111,7 @@ MiniClue.setup({
 --   end
 -- end, { expr = true, desc = "Confirm candidate (mini.completion)" })
 
-vim.keymap.set("n", "<C-n>", MiniFiles.open, { desc = "Open file explorer (mini.files)" })
+vim.keymap.set("n", "<C-n>", MiniFiles.open, { remap = true, desc = "Open file explorer (mini.files)" })
 
 MiniHipatterns.setup({
   highlighters = {

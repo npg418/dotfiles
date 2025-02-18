@@ -15,7 +15,7 @@
         {
           hm = "home-manager";
         }
-        // lib.optionalAttrs config.programs.neovim.enable { v = "nvim"; }
+        // lib.optionalAttrs ( config.programs.neovim.enable || config.programs.nixvim.enable ) { v = "nvim"; }
         // lib.optionalAttrs config.programs.eza.enable {
           ls = "eza";
           ll = "eza -hlg";
@@ -28,6 +28,10 @@
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
       fi
+    '';
+    initExtra = /* sh */ ''
+      function expand_after_sudo() {
+      }
     '';
   };
 }
