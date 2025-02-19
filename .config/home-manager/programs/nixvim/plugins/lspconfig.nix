@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.nixvim.plugins = {
     lsp = {
@@ -31,12 +31,22 @@
         };
       servers = {
         nil_ls.enable = true;
-        efm.enable = true;
+        efm = {
+          enable = true;
+          extraOptions = {
+            init_options = {
+              documentFormatting = true;
+              documentRangeFormatting = true;
+            };
+            settings.rootMarkers = [ ".git/" ];
+          };
+        };
       };
     };
     efmls-configs = {
       enable = true;
       setup.nix.formatter = "nixfmt";
+      toolPackages.nixfmt = pkgs.nixfmt-rfc-style;
     };
   };
 }
