@@ -22,54 +22,56 @@
       })
     ];
     extraConfigLua = ''
-      local care = require("care")
+      do
+        local care = require("care")
 
-      local labels = {}
-      for i = 1, 9 do
-        labels[i] = tostring(i)
-      end
+        local labels = {}
+        for i = 1, 9 do
+          labels[i] = tostring(i)
+        end
 
-      care.setup({
-        ${lib.optionalString config.programs.nixvim.plugins.luasnip.enable ''
-          snippet_expansion = function(body)
-            require("luasnip").lsp_expand(body)
-          end,
-        ''}
-        ui = {
-          ${lib.optionalString (builtins.hasAttr "icon" config.programs.nixvim.plugins.mini.modules) ''
-            type_icons = "mini.icons",
-          ''}
-          ghost_text = {
-            enabled = true,
-            position = "inline",
-          },
-          menu = {
-            format_entry = function(entry, data)
-              local components = require("care.presets.components")
-              return {
-                components.Padding(1),
-                components.ShortcutLabel(labels, entry, data),
-                components.Padding(1),
-                components.KindIcon(entry, "blended"),
-                components.Padding(1),
-                components.Label(entry, data, true),
-                components.Padding(1),
-                components.KindName(entry, true),
-                components.Padding(1),
-              }
+        care.setup({
+          ${lib.optionalString config.programs.nixvim.plugins.luasnip.enable ''
+            snippet_expansion = function(body)
+              require("luasnip").lsp_expand(body)
             end,
+          ''}
+          ui = {
+            ${lib.optionalString (builtins.hasAttr "icon" config.programs.nixvim.plugins.mini.modules) ''
+              type_icons = "mini.icons",
+            ''}
+            ghost_text = {
+              enabled = true,
+              position = "inline",
+            },
+            menu = {
+              format_entry = function(entry, data)
+                local components = require("care.presets.components")
+                return {
+                  components.Padding(1),
+                  components.ShortcutLabel(labels, entry, data),
+                  components.Padding(1),
+                  components.KindIcon(entry, "blended"),
+                  components.Padding(1),
+                  components.Label(entry, data, true),
+                  components.Padding(1),
+                  components.KindName(entry, true),
+                  components.Padding(1),
+                }
+              end,
+            },
           },
-        },
-        scrollbar = {
-          enabled = true,
-        },
-      })
+          scrollbar = {
+            enabled = true,
+          },
+        })
 
-      for i, label in ipairs(labels) do
-        vim.keymap.set("i", "<C-" .. label .. ">", function()
-          care.api.select_visible(i)
-          care.api.confirm()
-        end)
+        for i, label in ipairs(labels) do
+          vim.keymap.set("i", "<C-" .. label .. ">", function()
+            care.api.select_visible(i)
+            care.api.confirm()
+          end)
+        end
       end
     '';
     keymaps = [
