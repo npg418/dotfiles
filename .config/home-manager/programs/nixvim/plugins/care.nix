@@ -25,7 +25,7 @@
       local care = require("care")
 
       local labels = {}
-      for i=1,9 do
+      for i = 1, 9 do
         labels[i] = tostring(i)
       end
 
@@ -36,6 +36,9 @@
           end,
         ''}
         ui = {
+          ${lib.optionalString (builtins.hasAttr "icon" config.programs.nixvim.plugins.mini.modules) ''
+            type_icons = "mini.icons",
+          ''}
           ghost_text = {
             enabled = true,
             position = "inline",
