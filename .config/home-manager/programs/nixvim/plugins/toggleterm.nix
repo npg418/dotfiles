@@ -44,18 +44,7 @@
               auto_scroll = true,
               hidden = true,
             })
-            local mode = opts.fargs[1];
-            if mode and mode == "bg" then
-              term:spawn()
-            else
-              term:toggle()
-            end
-          end
-        '';
-        nargs = "?";
-        complete = nixvim.mkRaw ''
-          function()
-            return { "fg", "bg" }
+            term:spawn()
           end
         '';
         desc = "Run `home-manager switch` and reload & apply neovim settings (neovim)";
