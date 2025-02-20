@@ -4,7 +4,9 @@
     colorscheme = "catppuccin-macchiato";
     colorschemes.catppuccin = {
       enable = true;
-      autoLoad = true;
+      settings = {
+        dim_inactive.enabled = true;
+      };
     };
   };
 }
