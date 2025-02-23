@@ -25,7 +25,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      homeConfigurations."nullp" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.nullp = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./home.nix
