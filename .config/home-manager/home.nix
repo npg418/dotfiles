@@ -11,7 +11,7 @@
 
   imports = [
     # ./programs/neovim
-    ./programs/nixvim
+    ./programs/nixvim.nix
     ./programs/zsh.nix
     ./programs/starship.nix
     ./programs/git.nix

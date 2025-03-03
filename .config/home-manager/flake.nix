@@ -7,8 +7,8 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    my-nixvim = {
+      url = "path:./nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -17,7 +17,7 @@
     {
       nixpkgs,
       home-manager,
-      nixvim,
+      my-nixvim,
       ...
     }:
     let
@@ -29,11 +29,8 @@
         inherit pkgs;
         modules = [
           ./home.nix
-          nixvim.homeManagerModules.nixvim
+          my-nixvim.homeManagerModules.default
         ];
-        extraSpecialArgs = {
-          nixvim = nixvim.lib.nixvim;
-        };
       };
     };
 }
