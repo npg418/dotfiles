@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}:
+{ lib, ... }:
 {
   plugins = {
     conform-nvim = {
@@ -28,6 +25,7 @@
         };
       };
     };
+    lsp.keymaps.lspBuf.gf = lib.mkIf false { };
   };
 
   keymaps = [
