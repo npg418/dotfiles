@@ -13,5 +13,6 @@
     ./luasnip.nix
     ./conform.nix
     ./neoconf.nix
+    ./lazy-lsp.nix
   ];
 }
