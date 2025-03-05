@@ -6,12 +6,20 @@
     dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
     autocd = true;
-    autosuggestion.enable = true;
+    autosuggestion = {
+      enable = true;
+      strategy = [
+        "completion"
+        "history"
+      ];
+    };
+    history = {
+      ignoreAllDups = true;
+      ignoreSpace = true;
+    };
     zsh-abbr = {
       enable = true;
-      abbreviations = {
-        hm = "home-manager";
-      };
+      abbreviations.hm = "home-manager";
     };
     envExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
