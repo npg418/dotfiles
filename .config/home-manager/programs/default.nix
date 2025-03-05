@@ -9,6 +9,7 @@
     ./git.nix
     ./nixvim.nix
     ./starship.nix
+    ./lazygit.nix
   ];
 
   programs = {
