@@ -17,37 +17,34 @@
       nixvim,
       ...
     }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      { withSystem, ... }:
-      {
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "aarch64-darwin"
-        ];
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
-        imports = [
-          nixvim.flakeModules.default
-        ];
+      imports = [
+        nixvim.flakeModules.default
+      ];
 
-        nixvim.packages.enable = true;
+      nixvim.packages.enable = true;
 
-        flake = {
-          nixvimModules.default = ./default.nix;
-          homeManagerModules.default = import ./wrappers/hm.nix nixvim [ self.nixvimModules.default ];
-        };
+      flake = {
+        nixvimModules.default = ./default.nix;
+        homeManagerModules.default = import ./wrappers/hm.nix nixvim [ self.nixvimModules.default ];
+      };
 
-        perSystem =
-          { system, ... }:
-          {
-            nixvimConfigurations.default = nixvim.lib.evalNixvim {
-              inherit system;
-              modules = [
-                self.nixvimModules.default
-              ];
-            };
+      perSystem =
+        { system, ... }:
+        {
+          nixvimConfigurations.default = nixvim.lib.evalNixvim {
+            inherit system;
+            modules = [
+              self.nixvimModules.default
+            ];
           };
-      }
-    );
+        };
+    };
 }

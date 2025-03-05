@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}:
+{ lib, config, ... }:
 {
   plugins.mini.modules.clue = {
     triggers =

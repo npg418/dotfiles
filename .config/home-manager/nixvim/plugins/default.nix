@@ -2,6 +2,7 @@
   imports = [
     ./mini
     ./copilot.nix
+    # ./coq.nix
     ./hardtime.nix
     ./treesitter.nix
     ./lspconfig.nix

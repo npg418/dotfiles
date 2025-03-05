@@ -4,6 +4,7 @@ let
     "align"
     "animate"
     "basics"
+    "bracketed"
     "colors"
     "comment"
     "cursorword"
@@ -32,9 +33,9 @@ let
 in
 {
   imports = [
-    ./bracketed.nix
     ./bufremove.nix
     ./clue.nix
+    ./extra.nix
     ./files.nix
     ./hipatterns.nix
     ./notify.nix
