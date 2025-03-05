@@ -1,4 +1,3 @@
-{ ... }:
 let
   theme-catppuccin-mocha-toml = builtins.readFile (
     builtins.fetchurl {

@@ -1,5 +1,3 @@
-{ config, lib, ... }:
-
 {
   nixpkgs.config.allowUnfree = true;
   programs.zsh = {
@@ -11,17 +9,9 @@
     autosuggestion.enable = true;
     zsh-abbr = {
       enable = true;
-      abbreviations =
-        {
-          hm = "home-manager";
-        }
-        // lib.optionalAttrs config.programs.eza.enable {
-          ls = "eza";
-          ll = "eza -hlg";
-          la = "eza -hlga";
-        }
-        // lib.optionalAttrs config.programs.lazygit.enable { lg = "lazygit"; }
-        // lib.optionalAttrs config.programs.git.enable { cdg = "cd $(git rev-parse --show-toplevel)"; };
+      abbreviations = {
+        hm = "home-manager";
+      };
     };
     envExtra = ''
       if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
