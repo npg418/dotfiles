@@ -9,8 +9,8 @@
     autosuggestion = {
       enable = true;
       strategy = [
-        "completion"
         "history"
+        "completion"
       ];
     };
     history = {
@@ -26,10 +26,5 @@
         . ~/.nix-profile/etc/profile.d/nix.sh
       fi
     '';
-    initExtra = # sh
-      ''
-        function expand_after_sudo() {
-        }
-      '';
   };
 }

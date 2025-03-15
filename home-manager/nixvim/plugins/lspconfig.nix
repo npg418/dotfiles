@@ -1,30 +1,73 @@
+{ lib, config, ... }:
 {
   plugins.lsp = {
     enable = true;
     inlayHints = true;
     keymaps =
       let
-        withDesc = action: desc: {
-          inherit action;
-          desc = "${desc} (neovim)";
-        };
+        usedKeys = map (def: def.key) config.keymaps;
+        createKeymap =
+          definition:
+          let
+            filtered = lib.filterAttrs (key: opts: !(builtins.elem key usedKeys)) definition;
+            descripted = builtins.mapAttrs (
+              key: opts: { desc = "Neovim lsp action ${opts.action}"; } // opts
+            ) filtered;
+          in
+          builtins.mapAttrs (key: opts: opts // { desc = opts.desc + " (Neovim)"; }) descripted;
       in
       {
-        diagnostic = {
-          "g]" = withDesc "goto_next" "Goto next diagnostic";
-          "g[" = withDesc "goto_prev" "Goto previous diagnostic";
-          ge = withDesc "open_float" "Open diagnostic float";
+        diagnostic = createKeymap {
+          "g]" = {
+            action = "goto_next";
+            desc = "Goto next diagnostic";
+          };
+          "g[" = {
+            action = "goto_prev";
+            desc = "Goto previous diagnostic";
+          };
+          ge = {
+            action = "open_float";
+            desc = "Open diagnostic float";
+          };
         };
-        lspBuf = {
-          gr = withDesc "references" "Jump to the references";
-          gd = withDesc "definition" "Jump to the definition";
-          gD = withDesc "declaration" "Jump to the declaration";
-          gi = withDesc "implementation" "Jump to the implementation";
-          gt = withDesc "type_definition" "Jump to the type definition";
-          gf = withDesc "format" "Format current file";
-          gn = withDesc "rename" "Rename symbol under cursor";
-          "g." = withDesc "code_action" "Do code action under cursor";
-          K = withDesc "hover" "Hover on symbol under cursor";
+        lspBuf = createKeymap {
+          gr = {
+            action = "references";
+            desc = "Jump to the references";
+          };
+          gd = {
+            action = "definition";
+            desc = "Jump to the definition";
+          };
+          gD = {
+            action = "declaration";
+            desc = "Jump to the declaration";
+          };
+          gi = {
+            action = "implementation";
+            desc = "Jump to the implementation";
+          };
+          gt = {
+            action = "type_definition";
+            desc = "Jump to the type definition";
+          };
+          gf = {
+            action = "format";
+            desc = "Format current file";
+          };
+          gn = {
+            action = "rename";
+            desc = "Rename symbol under cursor";
+          };
+          "g." = {
+            action = "code_action";
+            desc = "Do code action under cursor";
+          };
+          K = {
+            action = "hover";
+            desc = "Hover on symbol under cursor";
+          };
         };
       };
   };
