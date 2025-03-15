@@ -4,12 +4,8 @@ let
 in
 {
   clipboard = {
-    register = [ "unnamed" ];
-    providers = {
-      wl-copy.enable = true;
-      xclip.enable = true;
-      xsel.enable = true;
-    };
+    register = [ "unnamedplus" ];
+    providers.wl-copy.enable = true;
   };
 
   diagnostics = {
