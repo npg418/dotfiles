@@ -16,7 +16,7 @@
             stdin = true;
             cwd = lib.nixvim.mkRaw "require(\"conform.util\").root_file({ \"treefmt.toml\" })";
             require_cwd = true;
-            # FUCK: range_args can't be added until [numtide/treefmt#276](https://github.com/numtide/treefmt/issues/276) resolve
+            # FUCK: range_args can't be added until [numtide/treefmt#276](https://github.com/numtide/treefmt/issues/276) solve
           };
         };
         format_on_save = {
@@ -25,7 +25,6 @@
         };
       };
     };
-    lsp.keymaps.lspBuf.gf = lib.mkIf false { };
   };
 
   keymaps = [
