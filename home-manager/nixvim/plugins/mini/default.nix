@@ -17,6 +17,7 @@ let
     "misc"
     "move"
     "pairs"
+    "sessions"
     "splitjoin"
     "starter"
     "statusline"
@@ -40,7 +41,6 @@ in
     ./hipatterns.nix
     ./notify.nix
     ./pick.nix
-    ./sessions.nix
     ./tabline.nix
   ];
 
