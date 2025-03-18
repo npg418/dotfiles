@@ -3,7 +3,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<Leader>gg";
+      key = "<Leader>lg";
       action = "<Cmd>LazyGit<CR>";
       options.desc = "Open lazygit (lazygit)";
     }
