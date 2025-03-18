@@ -89,17 +89,15 @@ in
     }
   ];
 
-  userCommands = {
-    ClearReg = {
-      command = lib.nixvim.mkRaw ''
-        function()
-          for i = 0, 25 do
-            vim.fn.setreg(string.char(string.byte("a") + i), {})
-          end
+  userCommands.ClearReg = {
+    command = lib.nixvim.mkRaw ''
+      function()
+        for i = 0, 25 do
+          vim.fn.setreg(string.char(string.byte("a") + i), {})
         end
-      '';
-      desc = "Clear a-z registers (neovim)";
-    };
+      end
+    '';
+    desc = "Clear a-z registers (neovim)";
   };
 
   opts = {
