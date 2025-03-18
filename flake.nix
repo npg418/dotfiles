@@ -20,7 +20,7 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              treefmt2
+              treefmt
               nixfmt-rfc-style
               taplo
             ];
