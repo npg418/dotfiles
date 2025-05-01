@@ -7,7 +7,6 @@
     ./eza.nix
     ./gh.nix
     ./git.nix
-    ./nixvim.nix
     ./starship.nix
     ./lazygit.nix
   ];

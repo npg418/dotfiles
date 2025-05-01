@@ -1,0 +1,200 @@
+error:
+       … while calling the 'head' builtin
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/attrsets.nix:1574:11:
+         1573|         || pred here (elemAt values 1) (head values) then
+         1574|           head values
+             |           ^
+         1575|         else
+
+       … while evaluating the attribute 'value'
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/modules.nix:927:9:
+          926|     in warnDeprecation opt //
+          927|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          928|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `flake.packages':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/transposition.nix':
+
+       … while evaluating the option `allSystems':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/perSystem.nix':
+
+       … while evaluating the option `systems':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: The option `systems' was accessed but has no value defined. Try setting the option.
+error:
+       … while calling the 'head' builtin
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/attrsets.nix:1574:11:
+         1573|         || pred here (elemAt values 1) (head values) then
+         1574|           head values
+             |           ^
+         1575|         else
+
+       … while evaluating the attribute 'value'
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/modules.nix:927:9:
+          926|     in warnDeprecation opt //
+          927|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          928|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `flake.packages':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/transposition.nix':
+
+       … while evaluating the option `allSystems':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/perSystem.nix':
+
+       … while evaluating the option `systems':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: The option `systems' was accessed but has no value defined. Try setting the option.
+error:
+       … while calling the 'head' builtin
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/attrsets.nix:1574:11:
+         1573|         || pred here (elemAt values 1) (head values) then
+         1574|           head values
+             |           ^
+         1575|         else
+
+       … while evaluating the attribute 'value'
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/modules.nix:927:9:
+          926|     in warnDeprecation opt //
+          927|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          928|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `flake.packages':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/transposition.nix':
+
+       … while evaluating the option `allSystems':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/perSystem.nix':
+
+       … while evaluating the option `systems':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: The option `systems' was accessed but has no value defined. Try setting the option.
+warning: updating lock file '/home/nullp/.config/home-manager/flake.lock':
+• Updated input 'dotfiles':
+    'path:/home/nullp/dotfiles?lastModified=1745546929&narHash=sha256-0aG2xMLw9kZt8IyrfQapIz2B4tZqlw81FviMe1hA8wI%3D' (2025-04-25)
+  → 'path:/home/nullp/dotfiles?lastModified=1745800224&narHash=sha256-2tvmzB9NCuOKsBmaXAIu6iRVVKrlr/mrAZMA9IYkD74%3D' (2025-04-28)
+error:
+       … while calling the 'head' builtin
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/attrsets.nix:1574:11:
+         1573|         || pred here (elemAt values 1) (head values) then
+         1574|           head values
+             |           ^
+         1575|         else
+
+       … while evaluating the attribute 'value'
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/modules.nix:927:9:
+          926|     in warnDeprecation opt //
+          927|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          928|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `flake.packages':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/transposition.nix':
+
+       … while evaluating the option `allSystems':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/perSystem.nix':
+
+       … while evaluating the option `systems':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: The option `systems' was accessed but has no value defined. Try setting the option.
+error:
+       … while calling the 'head' builtin
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/attrsets.nix:1574:11:
+         1573|         || pred here (elemAt values 1) (head values) then
+         1574|           head values
+             |           ^
+         1575|         else
+
+       … while evaluating the attribute 'value'
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/modules.nix:927:9:
+          926|     in warnDeprecation opt //
+          927|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          928|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `flake.packages':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/transposition.nix':
+
+       … while evaluating the option `allSystems':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/perSystem.nix':
+
+       … while evaluating the option `systems':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: The option `systems' was accessed but has no value defined. Try setting the option.
+error:
+       … while calling the 'head' builtin
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/attrsets.nix:1574:11:
+         1573|         || pred here (elemAt values 1) (head values) then
+         1574|           head values
+             |           ^
+         1575|         else
+
+       … while evaluating the attribute 'value'
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/modules.nix:927:9:
+          926|     in warnDeprecation opt //
+          927|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          928|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `flake.packages':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/transposition.nix':
+
+       … while evaluating the option `allSystems':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/perSystem.nix':
+
+       … while evaluating the option `systems':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: The option `systems' was accessed but has no value defined. Try setting the option.
+error:
+       … while calling the 'head' builtin
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/attrsets.nix:1574:11:
+         1573|         || pred here (elemAt values 1) (head values) then
+         1574|           head values
+             |           ^
+         1575|         else
+
+       … while evaluating the attribute 'value'
+         at /nix/store/80jiav8nl8hsx2sf4miaihfacajn1i5h-source/lib/modules.nix:927:9:
+          926|     in warnDeprecation opt //
+          927|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         ^
+          928|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `flake.packages':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/transposition.nix':
+
+       … while evaluating the option `allSystems':
+
+       … while evaluating definitions from `/nix/store/8lw7ywpxvmmzryn9mnipqhvac4vpwzik-source/modules/perSystem.nix':
+
+       … while evaluating the option `systems':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: The option `systems' was accessed but has no value defined. Try setting the option.
