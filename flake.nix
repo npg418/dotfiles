@@ -2,14 +2,11 @@
   description = "NPG418's dotfiles with nix!";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default";
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
@@ -19,56 +16,57 @@
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      { config, ... }:
-      {
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
-        imports = [
-          inputs.home-manager.flakeModules.home-manager
-          inputs.nixvim.flakeModules.default
-        ];
-        nixvim.packages.enable = true;
-        flake = {
-          nixosModules = {
-            default = ./nixos/configuration.nix;
-            wsl.imports = [
-              inputs.nixos-wsl.nixosModules.default
-              ./nixos/wsl.nix
-            ];
-          };
-          homeModules = {
-            npg418 = ./home-manager/home.nix;
-            nixvim = import ./nixvim/home-manager/wrapper.nix inputs.nixvim [
-              config.flake.nixvimModules.default
-            ];
-            default.imports = [
-              config.flake.homeModules.npg418
-              config.flake.homeModules.nixvim
-            ];
-          };
-          nixvimModules.default = ./nixvim;
+    inputs@{
+      self,
+      nixpkgs,
+      flake-parts,
+      systems,
+      nixos-wsl,
+      nixvim,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import systems;
+      imports = [
+        nixvim.flakeModules.default
+      ];
+      flake = {
+        nixosModules = {
+          default = ./nixos/configuration.nix;
+          wsl.imports = [
+            nixos-wsl.nixosModules.default
+            ./nixos/wsl.nix
+          ];
         };
-        perSystem =
-          { system, pkgs, ... }:
-          {
-            devShells.default = pkgs.mkShellNoCC {
-              packages = with pkgs; [
-                treefmt
-                nixfmt-rfc-style
-                taplo
-              ];
-            };
-            nixvimConfigurations.default = inputs.nixvim.lib.evalNixvim {
-              inherit system;
-              modules = [
-                config.flake.nixvimModules.default
-              ];
-            };
+        homeModules = {
+          base = ./home-manager/home.nix;
+          nixvim = import ./nixvim/home-manager/wrapper.nix nixvim [
+            self.nixvimModules.default
+          ];
+          default.imports = [
+            self.homeModules.base
+            self.homeModules.nixvim
+          ];
+        };
+        nixvimModules.default = ./nixvim;
+      };
+      nixvim.checks.enable = false;
+      perSystem =
+        { pkgs, system, ... }:
+        {
+          devShells.default = pkgs.mkShellNoCC {
+            packages = with pkgs; [
+              treefmt
+              nixfmt-rfc-style
+              taplo
+            ];
           };
-      }
-    );
+          nixvimConfigurations.default = nixvim.lib.evalNixvim {
+            inherit system;
+            modules = [
+              self.nixvimModules.default
+            ];
+          };
+        };
+    };
 }

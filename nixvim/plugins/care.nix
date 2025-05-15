@@ -20,7 +20,7 @@
       src = pkgs.fetchFromGitHub {
         owner = "max397574";
         repo = "care.nvim";
-        rev = "dba715ef083e1df2a7d47bd45d0b66e34ca5bba9";
+        rev = "v0.1.0";
         hash = "sha256-I0zliEcat3/Neb323VM0iyrrbAwH2wFuVF1V0M0BH7o=";
       };
     })

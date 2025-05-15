@@ -10,10 +10,11 @@
     ./toggleterm.nix
     ./lazygit.nix
     ./suda.nix
-    ./care.nix
+    # ./care.nix
     ./luasnip.nix
     ./conform.nix
     ./neoconf.nix
     ./lazy-lsp.nix
+    ./blink-cmp.nix
   ];
 }

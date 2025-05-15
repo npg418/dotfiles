@@ -8,7 +8,7 @@ in
     providers.wl-copy.enable = true;
   };
 
-  diagnostics = {
+  diagnostic.settings = {
     virtual_text = {
       format = lib.nixvim.mkRaw ''
         function(diagnostic)
