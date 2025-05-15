@@ -8,7 +8,6 @@ let
     };
     modules = [
       (nixvim + "/wrappers/modules/hm.nix")
-      ./module.nix
     ] ++ modules;
   };
 in
@@ -24,6 +23,7 @@ in
         "configFile"
       ];
     })
+    ./module.nix
   ];
 
   config = lib.mkIf cfg.enable {
