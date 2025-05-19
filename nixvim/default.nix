@@ -7,5 +7,7 @@
     ./options.nix
     ./colorscheme.nix
     ./plugins
+    ./ftplugin.nix
+    ./snippets
   ];
 }
