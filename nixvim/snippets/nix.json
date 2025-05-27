@@ -1,6 +1,0 @@
-{
-  "multiline-string": {
-    "prefix": "''",
-    "body": "''$1''"
-  }
-}

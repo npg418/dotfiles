@@ -1,6 +1,6 @@
 let
   default-modules = [
-    "ai"
+    # "ai"
     "align"
     "animate"
     "basics"
@@ -16,7 +16,7 @@ let
     "jump"
     "misc"
     "move"
-    "pairs"
+    # "pairs"
     "sessions"
     "splitjoin"
     "starter"
