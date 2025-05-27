@@ -16,5 +16,6 @@
     ./neoconf.nix
     ./lazy-lsp.nix
     ./blink-cmp.nix
+    ./nvim-autopairs.nix
   ];
 }

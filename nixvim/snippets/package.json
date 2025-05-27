@@ -1,8 +1,0 @@
-{
-  "name": "user-snippet",
-  "contributes": {
-    "snippets": [
-      { "language": "nix", "path": "./nix.json" }
-    ]
-  }
-}

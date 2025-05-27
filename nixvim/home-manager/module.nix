@@ -96,6 +96,7 @@ in
         done
       ''
     ))
+    gcc
   ];
   programs.zsh.zsh-abbr.abbreviations.v = "nvim";
 }
