@@ -5,7 +5,7 @@
     # ./coq.nix
     ./hardtime.nix
     ./treesitter.nix
-    ./lspconfig.nix
+    # ./lspconfig.nix
     ./vimdoc-ja.nix
     ./toggleterm.nix
     ./lazygit.nix
@@ -13,8 +13,8 @@
     # ./care.nix
     ./luasnip.nix
     ./conform.nix
-    ./neoconf.nix
-    ./lazy-lsp.nix
+    # ./neoconf.nix
+    # ./lazy-lsp.nix
     ./blink-cmp.nix
     ./nvim-autopairs.nix
   ];
