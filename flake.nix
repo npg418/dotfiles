@@ -2,7 +2,7 @@
   description = "NPG418's dotfiles with nix!";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-25.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     nixos-wsl = {
@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -56,6 +56,8 @@
         {
           devShells.default = pkgs.mkShellNoCC {
             packages = with pkgs; [
+              nil
+              lua-language-server
               treefmt
               nixfmt-rfc-style
               taplo
