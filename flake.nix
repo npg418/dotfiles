@@ -56,8 +56,6 @@
         {
           devShells.default = pkgs.mkShellNoCC {
             packages = with pkgs; [
-              nil
-              lua-language-server
               treefmt
               nixfmt-rfc-style
               taplo
