@@ -15,12 +15,12 @@
     keymaps = map (def: def // { mode = "n"; }) [
       {
         key = "g]";
-        action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ step = 1, float = true }) end";
+        action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = 1, float = true }) end";
         options.desc = "Goto next diagnostic (Neovim diagnostic)";
       }
       {
         key = "g[";
-        action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ step = -1, float = true }) end";
+        action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = -1, float = true }) end";
         options.desc = "Goto previous diagnostic (Neovim diagnostic)";
       }
       {
