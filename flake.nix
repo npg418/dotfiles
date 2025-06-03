@@ -13,34 +13,34 @@
       url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      flake-parts,
-      systems,
-      nixos-wsl,
-      nixvim,
-      ...
-    }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import systems;
+  outputs = inputs @ {
+    self,
+    flake-parts,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = import inputs.systems;
       imports = [
-        nixvim.flakeModules.default
+        inputs.nixvim.flakeModules.default
+        inputs.treefmt.flakeModule
       ];
       flake = {
         nixosModules = {
           default = ./nixos/configuration.nix;
           wsl.imports = [
-            nixos-wsl.nixosModules.default
+            inputs.nixos-wsl.nixosModules.default
             ./nixos/wsl.nix
           ];
         };
         homeModules = {
           base = ./home-manager/home.nix;
-          nixvim = import ./nixvim/home-manager/wrapper.nix nixvim [
+          nixvim = import ./nixvim/home-manager/wrapper.nix inputs.nixvim [
             self.nixvimModules.default
           ];
           default.imports = [
@@ -51,22 +51,14 @@
         nixvimModules.default = ./nixvim;
       };
       nixvim.checks.enable = false;
-      perSystem =
-        { pkgs, system, ... }:
-        {
-          devShells.default = pkgs.mkShellNoCC {
-            packages = with pkgs; [
-              treefmt
-              nixfmt-rfc-style
-              taplo
-            ];
-          };
-          nixvimConfigurations.default = nixvim.lib.evalNixvim {
-            inherit system;
-            modules = [
-              self.nixvimModules.default
-            ];
+      perSystem = {...}: {
+        treefmt = {
+          projectRootFile = "flake.nix";
+          programs = {
+            # alejandra.enable = true;
+            nixfmt.enable = true;
           };
         };
+      };
     };
 }
