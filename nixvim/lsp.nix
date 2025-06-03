@@ -1,4 +1,8 @@
-{ lib, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   plugins.lspconfig.enable = true;
   lsp = {
@@ -53,11 +57,21 @@
         lspBufAction = "type_definition";
         options.desc = "Goto the type definition (Neovim lsp)";
       }
-      {
-        key = "gf";
-        lspBufAction = "format";
-        options.desc = "Format current file (Neovim lsp)";
-      }
+      (
+        let
+          hasConform = config.plugins.conform-nvim.enable;
+        in
+        {
+          key = "gf";
+          action = lib.nixvim.mkRaw ''
+            function()
+              ${if hasConform then "require('conform')" else "vim.lsp.buf"}.format({ async = true })
+            end
+          '';
+          options.desc =
+            if hasConform then "Format with conform (Conform)" else "Format current file (Neovim lsp)";
+        }
+      )
       {
         key = "gn";
         lspBufAction = "rename";
