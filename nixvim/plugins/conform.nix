@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   plugins.conform-nvim = {
     enable = true;
     settings = {
@@ -10,9 +11,9 @@
         lsp_format = "fallback";
       };
       formatters_by_ft = {
-        "*" = ["flake_defined"];
-        nix = ["alejandra"];
-        lua = ["stylua"];
+        "*" = [ "flake_defined" ];
+        nix = [ "alejandra" ];
+        lua = [ "stylua" ];
       };
       formatters = {
         flake_defined = {

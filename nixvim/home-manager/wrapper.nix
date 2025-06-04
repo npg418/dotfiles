@@ -1,5 +1,9 @@
 nixvim: modules:
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.programs.nixvim;
   evalArgs = {

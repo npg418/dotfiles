@@ -19,12 +19,13 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    flake-parts,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{
+      self,
+      flake-parts,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
       imports = [
         inputs.nixvim.flakeModules.default
@@ -51,14 +52,16 @@
         nixvimModules.default = ./nixvim;
       };
       nixvim.checks.enable = false;
-      perSystem = {...}: {
-        treefmt = {
-          projectRootFile = "flake.nix";
-          programs = {
-            # alejandra.enable = true;
-            nixfmt.enable = true;
+      perSystem =
+        { ... }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              alejandra.enable = true;
+              nixfmt.enable = true;
+            };
           };
         };
-      };
     };
 }
