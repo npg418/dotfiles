@@ -1,4 +1,8 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   plugins.mini.modules.extra = { };
   keymaps = lib.mkIf (builtins.hasAttr "pick" config.plugins.mini.modules) [

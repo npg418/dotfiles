@@ -2,7 +2,7 @@
 {
   plugins = {
     lsp.enable = true;
-    neoconf.luaConfig.post  = ''
+    neoconf.luaConfig.post = ''
       do
         local util = require("neoconf.util");
       end

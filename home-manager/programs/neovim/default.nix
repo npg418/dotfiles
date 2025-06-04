@@ -1,8 +1,15 @@
-{ pkgs, lib, ... }:
-
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
   fromGitHub =
-    { owner, repo, ... }@spec:
+    {
+      owner,
+      repo,
+      ...
+    }@spec:
     pkgs.vimUtils.buildVimPlugin {
       pname = lib.strings.sanitizeDerivationName owner + "/" + repo;
       version = "fromGitHub";
