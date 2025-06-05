@@ -52,16 +52,5 @@
         nixvimModules.default = ./nixvim;
       };
       nixvim.checks.enable = false;
-      perSystem =
-        { ... }:
-        {
-          treefmt = {
-            projectRootFile = "flake.nix";
-            programs = {
-              alejandra.enable = true;
-              nixfmt.enable = true;
-            };
-          };
-        };
     };
 }
