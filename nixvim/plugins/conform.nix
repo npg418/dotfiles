@@ -20,7 +20,9 @@
             "$FILENAME"
           ];
           stdin = true;
-          cwd = lib.nixvim.mkRaw "require(\"conform.util\").root_file({ \"treefmt.toml\" })";
+          cwd = lib.nixvim.mkRaw ''
+            require("conform.util").root_file({ "treefmt.toml", "treefmt.nix", "devenv.nix", "flake.nix" })
+          '';
           require_cwd = true;
         };
         flake_defined = {
