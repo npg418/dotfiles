@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     # ./neovim
     ./zsh.nix
-    ./direnv.nix
     ./eza.nix
     ./gh.nix
     ./git.nix
@@ -14,6 +12,7 @@
   programs = {
     zoxide.enable = true;
     thefuck.enable = true;
+    direnv.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -23,5 +22,6 @@
     unzip
     dnsutils
     cowsay
+    devenv
   ];
 }
