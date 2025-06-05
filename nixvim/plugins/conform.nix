@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 {
   plugins.conform-nvim = {
     enable = true;
@@ -11,11 +7,22 @@
         lsp_format = "fallback";
       };
       formatters_by_ft = {
-        "*" = [ "flake_defined" ];
-        nix = [ "alejandra" ];
+        "*" = [ "treefmt" ];
+        nix = [ "nixfmt" ];
         lua = [ "stylua" ];
       };
       formatters = {
+        treefmt = {
+          command = "treefmt";
+          args = [
+            "--allow-missing-formatter"
+            "--stdin"
+            "$FILENAME"
+          ];
+          stdin = true;
+          cwd = lib.nixvim.mkRaw "require(\"conform.util\").root_file({ \"treefmt.toml\" })";
+          require_cwd = true;
+        };
         flake_defined = {
           command = "nix";
           args = [
@@ -25,6 +32,7 @@
           cwd = lib.nixvim.mkRaw ''
             require("conform.util").root_file({ "flake.nix" })
           '';
+          require_cwd = true;
         };
       };
       format_on_save = {
@@ -34,7 +42,7 @@
   };
 
   extraPackages = with pkgs; [
-    alejandra
+    nixfmt-rfc-style
     stylua
   ];
 }
