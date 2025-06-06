@@ -2,7 +2,10 @@
 {
   i18n.defaultLocale = "ja_JP.UTF-8";
   time.timeZone = "Asia/Tokyo";
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    nix-ld.enable = true;
+  };
   users.users.nullp = {
     isNormalUser = true;
     extraGroups = [
