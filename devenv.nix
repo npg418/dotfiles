@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 {
-  packages = [
+  packages = with pkgs; [
     (inputs.treefmt-nix.lib.mkWrapper pkgs {
       projectRootFile = "flake.nix";
       programs = {
@@ -8,5 +8,7 @@
         yamlfmt.enable = true;
       };
     })
+    yaml-language-server
   ];
+  languages.nix.enable = true;
 }

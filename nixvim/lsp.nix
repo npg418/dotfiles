@@ -11,6 +11,7 @@
         lsps = [
           "nil_ls"
           "lua_ls"
+          "yamlls"
         ];
       in
       lib.genAttrs lsps (_: {
@@ -65,7 +66,7 @@
           key = "gf";
           action = lib.nixvim.mkRaw ''
             function()
-              ${if hasConform then "require('conform')" else "vim.lsp.buf"}.format({ async = true })
+              ${if hasConform then "require('conform')" else "vim.lsp.buf"}.format()
             end
           '';
           options.desc =
