@@ -12,6 +12,7 @@
           "nil_ls"
           "lua_ls"
           "yamlls"
+          "pyls"
         ];
       in
       lib.genAttrs lsps (_: {
