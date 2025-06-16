@@ -10,6 +10,7 @@
         "*" = [ "treefmt" ];
         nix = [ "nixfmt" ];
         lua = [ "stylua" ];
+        python = [ "ruff" ];
       };
       formatters = {
         treefmt = {
