@@ -52,5 +52,16 @@
         nixvimModules.default = ./nixvim;
       };
       nixvim.checks.enable = false;
+      perSystem =
+        { pkgs, system, ... }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs.nixfmt.enable = true;
+          };
+          devShells.default = pkgs.mkShellNoCC {
+            packages = [ self.formatter.${system} ];
+          };
+        };
     };
 }

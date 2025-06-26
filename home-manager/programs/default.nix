@@ -8,12 +8,12 @@
     ./git.nix
     ./starship.nix
     ./lazygit.nix
+    ./direnv.nix
   ];
 
   programs = {
     zoxide.enable = true;
     thefuck.enable = true;
-    direnv.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -23,6 +23,5 @@
     unzip
     dnsutils
     cowsay
-    devenv
   ];
 }
