@@ -6,6 +6,11 @@
     zsh.enable = true;
     nix-ld.enable = true;
   };
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+    autoPrune.enable = true;
+  };
   users.users.nullp = {
     isNormalUser = true;
     extraGroups = [
