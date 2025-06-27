@@ -13,6 +13,7 @@
           "lua_ls"
           "yamlls"
           "ruff"
+          "ts_ls"
         ];
       in
       lib.genAttrs lsps (_: {
