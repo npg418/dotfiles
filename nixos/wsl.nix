@@ -10,7 +10,6 @@
     defaultUser = "nullp";
     wslConf = {
       automount.root = "/mnt";
-      interop.appendWindowsPath = false;
       network.generateHosts = false;
     };
     docker-desktop.enable = false;
