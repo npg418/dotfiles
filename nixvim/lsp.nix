@@ -14,6 +14,7 @@
           "yamlls"
           "ruff"
           "ts_ls"
+          "jsonls"
           "dockerls"
           "docker_compose_language_service"
         ];
