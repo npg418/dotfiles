@@ -50,6 +50,10 @@
           ];
         };
         nixvimModules.default = ./nixvim;
+        templates.projectFlake = {
+          path = ./templates/project-flake;
+          description = "Project root configuration flake";
+        };
       };
       nixvim.checks.enable = false;
       perSystem =
