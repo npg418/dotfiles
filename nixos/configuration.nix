@@ -30,4 +30,33 @@
       "nullp"
     ];
   };
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-extra
+      noto-fonts-emoji
+      hackgen-nf-font
+      dejavu_fonts
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = [
+          "Noto Sans CJK JP"
+          "DejaVu Sans"
+        ];
+        serif = [
+          "Noto Serif JP"
+          "DejaVu Serif"
+        ];
+        monospace = [
+          "HackGen Console NF"
+          "DejaVu Sans Mono"
+        ];
+      };
+      subpixel.lcdfilter = "light";
+    };
+  };
 }
