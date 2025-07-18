@@ -59,4 +59,10 @@
       subpixel.lcdfilter = "light";
     };
   };
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitTunnel = "yes";
+    };
+  };
 }
