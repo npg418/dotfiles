@@ -23,5 +23,6 @@
     unzip
     dnsutils
     cowsay
+    ghq
   ];
 }
