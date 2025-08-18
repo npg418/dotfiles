@@ -31,7 +31,7 @@ in
       enable = true;
       abbreviations.hm = "home-manager";
     };
-    initExtra = lib.mkIf (hasFzf && hasGhq) ''
+    initContent = lib.mkIf (hasFzf && hasGhq) ''
       function ghq_fzf_change_directory() {
         local src=$(ghq list | fzf --preview "eza -l -g -a --icons $(ghq root)/{} | tail -n+4 | awk '{print \$6\"/\"\$8\" \"\$9 \" \" \$10}'")
         if [ -n "$src" ]; then
