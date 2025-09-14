@@ -1,7 +1,7 @@
 let
   default-modules = [
     # "ai"
-    "align"
+    # "align"
     "animate"
     "basics"
     "bracketed"
