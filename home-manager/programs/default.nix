@@ -9,6 +9,7 @@
     ./starship.nix
     ./lazygit.nix
     ./direnv.nix
+    ./bat.nix
   ];
 
   programs = {
