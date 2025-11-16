@@ -39,16 +39,12 @@
             ./nixos/wsl.nix
           ];
         };
-        homeModules = {
-          base = ./home-manager/home.nix;
-          nixvim = import ./nixvim/home-manager/wrapper.nix inputs.nixvim [
+        homeModules.default.imports = [
+          ./home-manager/home.nix
+          (import ./nixvim/home-manager/wrapper.nix inputs.nixvim [
             self.nixvimModules.default
-          ];
-          default.imports = [
-            self.homeModules.base
-            self.homeModules.nixvim
-          ];
-        };
+          ])
+        ];
         nixvimModules.default = ./nixvim;
         templates.projectFlake = {
           path = ./templates/project-flake;
