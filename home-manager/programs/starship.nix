@@ -2,7 +2,7 @@ let
   catppuccin-powerline-preset-toml = builtins.readFile (
     builtins.fetchurl {
       url = "https://starship.rs/presets/toml/catppuccin-powerline.toml";
-      sha256 = "0j4jp769nqjcrzr3wjwahmzg5a5mxg2asy5vsh6l7y95258pwpr1";
+      sha256 = "0bd8zx0bpri63rnb9dva0rav75d3i2wrzw44h63m75hq5220r26g";
     }
   );
   catppuccin-theme = fromTOML catppuccin-powerline-preset-toml;
