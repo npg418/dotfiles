@@ -17,6 +17,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,10 +31,12 @@
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
+
       imports = [
         inputs.nixvim.flakeModules.default
         inputs.treefmt.flakeModule
       ];
+
       flake = {
         nixosModules = {
           default = ./nixos/configuration.nix;
@@ -39,19 +45,25 @@
             ./nixos/wsl.nix
           ];
         };
+
         homeModules.default.imports = [
+          { nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ]; }
           ./home-manager/home.nix
           (import ./nixvim/home-manager/wrapper.nix inputs.nixvim [
             self.nixvimModules.default
           ])
         ];
+
         nixvimModules.default = ./nixvim;
+
         templates.projectFlake = {
           path = ./templates/project-flake;
           description = "Project root configuration flake";
         };
       };
+
       nixvim.checks.enable = false;
+
       perSystem =
         { pkgs, system, ... }:
         {
@@ -59,6 +71,7 @@
             projectRootFile = "flake.nix";
             programs.nixfmt.enable = true;
           };
+
           devShells.default = pkgs.mkShellNoCC {
             packages = [ self.formatter.${system} ];
           };
