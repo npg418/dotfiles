@@ -15,8 +15,6 @@
           "ruff"
           "ts_ls"
           "jsonls"
-          "dockerls"
-          "docker_compose_language_service"
         ];
       in
       lib.genAttrs lsps (_: {
