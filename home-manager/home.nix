@@ -7,6 +7,6 @@
 
   imports = [
     ./programs
-    ./custom-home-manager.nix
+    # ./custom-home-manager.nix
   ];
 }
