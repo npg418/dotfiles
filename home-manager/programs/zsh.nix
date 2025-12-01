@@ -13,7 +13,7 @@ in
   programs.zsh = {
     enable = true;
     defaultKeymap = "emacs";
-    dotDir = ".config/zsh";
+    # dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
     autocd = true;
     autosuggestion = {

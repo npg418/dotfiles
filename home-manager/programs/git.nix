@@ -2,9 +2,11 @@
   programs = {
     git = {
       enable = true;
-      userName = "NPG418";
-      userEmail = "narupenguin919@gmail.com";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "NPG418";
+          email = "narupenguin919@gmail.com";
+        };
         init = {
           defaultBranch = "main";
         };

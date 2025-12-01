@@ -14,7 +14,7 @@
 
   programs = {
     zoxide.enable = true;
-    thefuck.enable = true;
+    pay-respects.enable = true;
     fzf.enable = true;
   };
 
