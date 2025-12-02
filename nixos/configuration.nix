@@ -36,8 +36,7 @@
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      noto-fonts-extra
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       hackgen-nf-font
       dejavu_fonts
     ];
