@@ -17,10 +17,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -47,7 +43,6 @@
         };
 
         homeModules.default.imports = [
-          { nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ]; }
           ./home-manager/home.nix
           (import ./nixvim/home-manager/wrapper.nix inputs.nixvim [
             self.nixvimModules.default
