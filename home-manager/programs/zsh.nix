@@ -29,7 +29,10 @@ in
     };
     zsh-abbr = {
       enable = true;
-      abbreviations.hm = "home-manager";
+      abbreviations = {
+        hms = "nix flake update --flake ~/.config/home-manager && home-manager switch";
+        nos = "sudo nix flake update --flake /etc/nixos && sudo nixos-rebuild switch";
+      };
     };
     initContent = lib.mkIf (hasFzf && hasGhq) ''
       function ghq_fzf_change_directory() {
