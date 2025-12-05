@@ -12,6 +12,7 @@
       local ts_conds = require("nvim-autopairs.ts-conds")
 
       npairs.add_rule(Rule("'''", "'''", "nix"):with_pair(ts_conds.is_not_ts_node("indented_string_expression")))
+      npairs.add_rule(Rule("=", ";", "nix"):with_pair(ts_conds.is_ts_node("attrset_expression")))
     '';
   };
 }
