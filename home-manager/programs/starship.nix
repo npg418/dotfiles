@@ -12,29 +12,4 @@ in
     enable = true;
     settings = catppuccin-theme;
   };
-  nixpkgs.overlays = [
-    (final: prev: {
-      starship =
-        (prev.starship.override {
-          rustPlatform = final.makeRustPlatform {
-            cargo = final.rust-bin.stable.latest.default;
-            rustc = final.rust-bin.stable.latest.default;
-          };
-        }).overrideAttrs
-          (drv: rec {
-            inherit (drv) pname;
-            version = "1.24.1";
-            src = prev.fetchFromGitHub {
-              owner = "starship";
-              repo = "starship";
-              tag = "v${version}";
-              hash = "sha256-yWG06l/Gu2/u4NNAyCYjxlmEKIsDAaxWGp6fmqXvNl8=";
-            };
-            cargoDeps = final.rustPlatform.fetchCargoVendor {
-              inherit src;
-              hash = "sha256-F7tzrMqF2xY8Ow+bAFbP0mQPomSe/oOHiQWHRHDmHio=";
-            };
-          });
-    })
-  ];
 }
