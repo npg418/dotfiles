@@ -19,6 +19,7 @@
       in
       lib.genAttrs lsps (_: {
         enable = true;
+        packageFallback = true;
       });
     keymaps = map (def: def // { mode = "n"; }) [
       {
