@@ -30,8 +30,8 @@ in
     zsh-abbr = {
       enable = true;
       abbreviations = {
-        hms = "nix flake update --flake ~/.config/home-manager && home-manager switch";
-        nos = "sudo nix flake update --flake /etc/nixos && sudo nixos-rebuild switch";
+        hms = "home-manager switch";
+        nos = "sudo nixos-rebuild switch";
       };
     };
     initContent = lib.mkIf (hasFzf && hasGhq) ''
