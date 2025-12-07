@@ -27,5 +27,6 @@
     dnsutils
     cowsay
     ghq
+    clang
   ];
 }
