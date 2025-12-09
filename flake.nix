@@ -22,6 +22,10 @@
       imports = [
         inputs.treefmt.flakeModule
       ];
+      flake.templates = {
+        project-flake = ./templates/project-flake;
+        default = self.templates.project-flake;
+      };
       perSystem =
         { pkgs, system, ... }:
         {
