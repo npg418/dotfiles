@@ -18,5 +18,6 @@
     ./blink-cmp.nix
     ./nvim-autopairs.nix
     ./text-case.nix
+    ./otter.nix
   ];
 }
