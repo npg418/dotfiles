@@ -23,7 +23,10 @@
         inputs.treefmt.flakeModule
       ];
       flake.templates = {
-        project-flake = ./templates/project-flake;
+        project-flake = {
+          path = ./templates/project-flake;
+          description = "Project root configuration flake";
+        };
         default = self.templates.project-flake;
       };
       perSystem =
