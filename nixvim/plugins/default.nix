@@ -19,5 +19,7 @@
     ./nvim-autopairs.nix
     ./text-case.nix
     ./otter.nix
+    ./lazydev.nix
+    ./lz-n.nix
   ];
 }
