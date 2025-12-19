@@ -76,6 +76,15 @@ in
       };
     }
     {
+      mode = "ca";
+      key = "wqa!";
+      action = "wa!|qa!";
+      options = {
+        remap = true;
+        desc = "To correctly quit from terminal buffer (with bang) (neovim)";
+      };
+    }
+    {
       mode = "t";
       key = "<ESC>";
       action = "<C-\\\><C-n>";
