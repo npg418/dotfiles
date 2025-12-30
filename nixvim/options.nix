@@ -63,17 +63,6 @@ in
       '';
       desc = "Auto close quickfix window (neovim)";
     }
-    {
-      event = "BufLeave";
-      callback = lib.nixvim.mkRaw ''
-        function()
-          if not vim.bo.readonly then
-            vim.cmd.write()
-          end
-        end
-      '';
-      desc = "Auto save when focus changed (neovim)";
-    }
   ];
 
   keymaps = [
