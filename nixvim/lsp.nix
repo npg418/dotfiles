@@ -15,6 +15,8 @@
           "ruff"
           "ts_ls"
           "jsonls"
+          "astro"
+          "emmet_language_server"
         ];
       in
       lib.genAttrs lsps (_: {
