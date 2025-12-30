@@ -12,7 +12,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<Leader>fs";
+      key = "<Leader>fg";
       action = lib.nixvim.mkRaw "MiniPick.builtin.grep_live";
       options.desc = "Open live fuzzy finder (mini.pick)";
     }
