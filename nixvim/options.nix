@@ -120,6 +120,10 @@ in
     timeoutlen = 500;
     termguicolors = true;
 
+    # Project-local
+    exrc = true;
+    secure = true;
+
     # Gutter
     number = true;
     relativenumber = true;
