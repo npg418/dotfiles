@@ -10,6 +10,9 @@ in
 {
   programs.starship = {
     enable = true;
-    settings = catppuccin-theme;
+    settings = catppuccin-theme // {
+      palette = "catppuccin_macchiato";
+      line_break.disabled = false;
+    };
   };
 }
