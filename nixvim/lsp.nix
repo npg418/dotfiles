@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -13,16 +14,52 @@
           "lua_ls"
           "yamlls"
           "ruff"
-          "ts_ls"
           "jsonls"
           "astro"
-          "emmet_language_server"
+          "vue_ls"
         ];
       in
-      lib.genAttrs lsps (_: {
+      (lib.genAttrs lsps (_: {
         enable = true;
         packageFallback = true;
-      });
+      }))
+      // {
+        ts_ls = {
+          enable = true;
+          packageFallback = true;
+          config = {
+            filetypes = [
+              "javascript"
+              "javascriptreact"
+              "javascript.jsx"
+              "typescript"
+              "typescriptreact"
+              "typescript.tsx"
+              "vue"
+            ];
+            init_options = {
+              plugins = [
+                {
+                  name = "@vue/typescript-plugin";
+                  location = "${pkgs.vue-language-server}/lib/language-tools/packages/language-server";
+                  languages = [ "vue" ];
+                }
+              ];
+            };
+          };
+        };
+        emmet_language_server = {
+          enable = true;
+          packageFallback = true;
+          config = {
+            init_options = {
+              preferences = {
+                "profile.allowCompactBoolean" = true;
+              };
+            };
+          };
+        };
+      };
     keymaps = map (def: def // { mode = "n"; }) [
       {
         key = "g]";
