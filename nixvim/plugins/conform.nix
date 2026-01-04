@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   plugins.conform-nvim = {
     enable = true;
@@ -6,11 +6,11 @@
       default_format_opts = {
         lsp_format = "fallback";
       };
+      format_on_save = {
+        timeout_ms = 500;
+      };
       formatters_by_ft = {
         "*" = [ "treefmt" ];
-        nix = [ "nixfmt" ];
-        lua = [ "stylua" ];
-        python = [ "ruff" ];
       };
       formatters = {
         treefmt = {
@@ -22,30 +22,11 @@
           ];
           stdin = true;
           cwd = lib.nixvim.mkRaw ''
-            require("conform.util").root_file({ "treefmt.toml", "treefmt.nix", "devenv.nix", "flake.nix" })
+            require("conform.util").root_file({ "treefmt.toml", "treefmt.nix", "flake.nix" })
           '';
           require_cwd = true;
         };
-        flake_defined = {
-          command = "nix";
-          args = [
-            "fmt"
-            "$FILENAME"
-          ];
-          cwd = lib.nixvim.mkRaw ''
-            require("conform.util").root_file({ "flake.nix" })
-          '';
-          require_cwd = true;
-        };
-      };
-      format_on_save = {
-        timeout_ms = 500;
       };
     };
   };
-
-  extraPackages = with pkgs; [
-    nixfmt-rfc-style
-    stylua
-  ];
 }
