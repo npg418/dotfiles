@@ -36,4 +36,6 @@
 
     wantedBy = [ "default.target" ];
   };
+
+  networking.interfaces.eth0.mtu = 1304;
 }
