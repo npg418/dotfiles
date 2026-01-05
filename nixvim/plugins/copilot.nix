@@ -6,10 +6,7 @@ in
   plugins = {
     copilot-lua.enable = true;
 
-    blink-copilot = {
-      enable = config.plugins.blink-cmp.enable;
-      lazyLoad.settings.keys = [ copilot-key ];
-    };
+    blink-copilot.enable = config.plugins.blink-cmp.enable;
 
     blink-cmp.settings = {
       keymap.${copilot-key} = [
