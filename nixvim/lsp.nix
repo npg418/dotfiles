@@ -17,6 +17,9 @@
           "jsonls"
           "astro"
           "vue_ls"
+          "svelte"
+          "taplo"
+          "typos_lsp"
         ];
       in
       (lib.genAttrs lsps (_: {
