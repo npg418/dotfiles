@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       default_format_opts = {
-        lsp_format = "fallback";
+        lsp_format = "first";
       };
       format_on_save = {
         timeout_ms = 500;
