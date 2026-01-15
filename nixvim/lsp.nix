@@ -20,6 +20,7 @@
           "svelte"
           "taplo"
           "typos_lsp"
+          "cssls"
         ];
       in
       (lib.genAttrs lsps (_: {
