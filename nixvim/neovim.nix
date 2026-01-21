@@ -7,6 +7,6 @@
     ./options.nix
     ./colorscheme.nix
     ./plugins
-    ./lsp.nix
+    ./lsps
   ];
 }
