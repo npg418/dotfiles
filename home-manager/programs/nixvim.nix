@@ -1,4 +1,23 @@
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  restart-code = "10";
+in
+{
+  home.packages = [
+    (lib.hiPrio (
+      pkgs.writeScriptBin "nvim" ''
+        while true; do
+          ${config.programs.nixvim.build.package}/bin/nvim "$@"
+          if [ $? -ne ${restart-code} ]; then break; fi
+        done
+      ''
+    ))
+  ];
   programs = {
     nixvim =
       { lib, ... }:
@@ -7,11 +26,17 @@
         defaultEditor = true;
         vimdiffAlias = true;
 
+        plugins.toggleterm.enable = true;
         userCommands.HMSwitch = {
           command = lib.nixvim.mkRaw ''
             function()
-              vim.fn.system("home-manager switch")
-              vim.cmd.source("$MYVIMRC")
+              local Terminal = require("toggleterm.terminal").Terminal
+              Terminal:new({
+                cmd = "home-manager switch",
+                on_exit = function ()
+                  vim.cmd("cquit ${restart-code}")
+                end,
+              }):toggle()
             end
           '';
         };
