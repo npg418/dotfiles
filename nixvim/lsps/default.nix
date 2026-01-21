@@ -3,12 +3,12 @@
   imports = [
     ./vue_ls.nix
     ./emmet_language_server.nix
+    ./efm.nix
   ];
   lsp = {
     servers =
       let
         lsps = [
-          "efm"
           "nil_ls"
           "lua_ls"
           "yamlls"
