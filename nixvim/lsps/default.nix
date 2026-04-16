@@ -1,9 +1,9 @@
 { lib, config, ... }:
 {
   imports = [
-    ./vue_ls.nix
+    # ./vue_ls.nix
     ./emmet_language_server.nix
-    ./efm.nix
+    # ./efm.nix
   ];
   lsp = {
     servers =
@@ -14,8 +14,8 @@
           "yamlls"
           "ruff"
           "jsonls"
-          "astro"
-          "svelte"
+          # "astro"
+          # "svelte"
           "taplo"
           "typos_lsp"
           "cssls"
