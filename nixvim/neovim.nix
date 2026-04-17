@@ -6,7 +6,7 @@
   imports = [
     ./options.nix
     ./colorscheme.nix
+    ./lsp.nix
     ./plugins
-    ./lsps
   ];
 }
