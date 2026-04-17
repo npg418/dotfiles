@@ -1,30 +1,33 @@
 { lib, config, ... }:
 {
-  imports = [
-    # ./vue_ls.nix
-    ./emmet_language_server.nix
-    # ./efm.nix
-  ];
   lsp = {
-    servers =
-      let
-        lsps = [
-          "nil_ls"
-          "lua_ls"
-          "yamlls"
-          "ruff"
-          "jsonls"
-          # "astro"
-          # "svelte"
-          "taplo"
-          "typos_lsp"
-          "cssls"
-        ];
-      in
-      (lib.genAttrs lsps (_: {
-        enable = true;
-        packageFallback = true;
-      }));
+    servers = (
+      builtins.mapAttrs
+        (
+          name: value:
+          {
+            enable = true;
+            packageFallback = true;
+          }
+          // value
+        )
+        {
+          nil_ls = { };
+          jsonls = { };
+          taplo = { };
+          yamlls = { };
+          cssls = { };
+          emmer_language_server = {
+            config = {
+              init_options = {
+                preferences = {
+                  "profile.allowCompactBoolean" = true;
+                };
+              };
+            };
+          };
+        }
+    );
     keymaps = map (def: def // { mode = "n"; }) [
       {
         key = "g]";

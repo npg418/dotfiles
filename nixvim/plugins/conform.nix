@@ -3,6 +3,7 @@
   plugins.conform-nvim = {
     enable = true;
     settings = {
+      autoInstall.enable = true;
       default_format_opts = {
         lsp_format = "first";
       };
