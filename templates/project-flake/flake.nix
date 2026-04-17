@@ -8,9 +8,17 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    treefmt = {
-      url = "github:numtide/treefmt-nix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    my-nixvim = {
+      url = "github:npg418/dotfiles";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixvim.follows = "nixvim";
+        flake-parts.follows = "flake-parts";
+      };
     };
   };
 
@@ -19,18 +27,31 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
       imports = [
-        inputs.treefmt.flakeModule
+        inputs.nixvim.flakeModules.default
       ];
+      nixvim = {
+        packages.enable = true;
+        checks.enable = true;
+      };
+      flake.nixvimModules.default = { };
       perSystem =
-        { pkgs, system, ... }:
         {
-          treefmt = {
-            projectRootFile = "flake.nix";
-            programs.nixfmt.enable = true;
+          self',
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          nixvimConfigurations.default = inputs.nixvim.lib.evalNixvim {
+            inherit system;
+            modules = [
+              inputs.my-nixvim.nixvimModules.default
+              self.nixvimModules.default
+            ];
           };
           devShells.default = pkgs.mkShellNoCC {
             packages = [
-              self.formatter.${system}
+              self'.packages.default
             ];
           };
         };
