@@ -10,24 +10,13 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nixos-wsl,
-    }:
+    { nixos-wsl, ... }:
     {
       nixosModules = {
         default = ./configuration.nix;
         wsl.imports = [
           nixos-wsl.nixosModules.default
           ./wsl.nix
-        ];
-      };
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          self.nixosModules.default
-          self.nixosModules.wsl
         ];
       };
     };

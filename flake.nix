@@ -40,6 +40,14 @@
             path = ./templates/project-flake;
             description = "Project root configuration flake";
           };
+          home-manager-configuration = {
+            path = ./templates/home-manager-configuration;
+            description = "Home-manager configuration flake";
+          };
+          nixos-configuration = {
+            path = ./templates/nixos-configuration;
+            description = "NixOS configuration flake";
+          };
           default = self.templates.project-flake;
         };
         nixvimModules.default = {

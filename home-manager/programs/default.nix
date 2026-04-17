@@ -10,7 +10,6 @@
     ./lazygit.nix
     ./direnv.nix
     ./bat.nix
-    ./nixvim.nix
   ];
 
   programs = {

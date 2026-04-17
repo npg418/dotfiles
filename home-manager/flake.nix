@@ -7,10 +7,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     my-nixvim = {
       url = "path:../nixvim";
       inputs = {
@@ -31,15 +27,16 @@
       imports = [
         inputs.home-manager.flakeModules.home-manager
       ];
-      flake = {
-        homeModules.default = ./home.nix;
-        homeConfigurations."nullp@nixos" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-          modules = [
-            self.homeModules.default
-            inputs.my-nixvim.homeModules.default
-          ];
-        };
+      flake.homeModules = {
+        base = ./home.nix;
+        nixvim.imports = [
+          inputs.my-nixvim.homeModules.default
+          ./programs/nixvim.nix
+        ];
+        default.imports = [
+          self.homeModules.base
+          self.homeModules.nixvim
+        ];
       };
     };
 }
