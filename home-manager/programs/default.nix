@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    # ./neovim
     ./zsh.nix
     ./eza.nix
     ./gh.nix
