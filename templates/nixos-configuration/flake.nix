@@ -19,6 +19,7 @@
         modules = [
           dotfiles.nixosModules.default
           dotfiles.nixosModules.wsl
+          ./configuration.nix
         ];
       };
     };
