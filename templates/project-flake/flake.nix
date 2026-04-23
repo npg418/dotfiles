@@ -2,14 +2,14 @@
   description = "Project flake for <project_name>";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     systems.url = "github:nix-systems/default";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     my-nixvim = {
@@ -33,7 +33,18 @@
         packages.enable = true;
         checks.enable = true;
       };
-      flake.nixvimModules.default = { };
+      flake.nixvimModules.default = {
+        lsp.servers = {
+          nil_ls.enable = true;
+        };
+        plugins = {
+          conform-nvim.settings = {
+            formatters_by_ft = {
+              nix = [ "nixfmt" ];
+            };
+          };
+        };
+      };
       perSystem =
         {
           self',
