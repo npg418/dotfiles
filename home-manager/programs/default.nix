@@ -14,6 +14,7 @@
   programs = {
     zoxide.enable = true;
     pay-respects.enable = true;
+    nix-index.enable = true;
     fzf.enable = true;
   };
 
