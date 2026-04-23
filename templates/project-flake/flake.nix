@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     my-nixvim = {
-      url = "github:npg418/dotfiles";
+      url = "github:npg418/dotfiles?dir=nixvim";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixvim.follows = "nixvim";
