@@ -11,7 +11,7 @@
         timeout_ms = 500;
       };
       formatters_by_ft = {
-        "*" = [ "treefmt" ];
+        # "*" = [ "treefmt" ];
       };
       formatters = {
         treefmt = {
