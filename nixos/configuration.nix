@@ -8,11 +8,12 @@
     nix-ld.enable = true;
   };
 
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = true;
-    autoPrune.enable = true;
-  };
+  system.packages = [
+    pkgs.man-pages
+    pkgs.man-pages-posix
+  ];
+
+  documentation.dev.enable = true;
 
   users.users.nullp = {
     isNormalUser = true;
