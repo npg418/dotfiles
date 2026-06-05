@@ -20,7 +20,8 @@
 
   home.packages = with pkgs; [
     ripgrep
-    neofetch
+    # neofetch
+    hyfetch
     zip
     unzip
     dnsutils

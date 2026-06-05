@@ -17,7 +17,7 @@
     # ./lazy-lsp.nix
     ./blink-cmp.nix
     ./nvim-autopairs.nix
-    ./text-case.nix
+    # ./text-case.nix
     ./otter.nix
     ./lazydev.nix
     ./lz-n.nix
