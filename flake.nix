@@ -2,17 +2,13 @@
   description = "NPG418's dotfiles with nix!";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim/nixos-26.05";
     my-nixvim = {
       url = "path:./nixvim";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
         nixvim.follows = "nixvim";
         flake-parts.follows = "flake-parts";
       };

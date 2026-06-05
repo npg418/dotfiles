@@ -2,16 +2,9 @@
   description = "NPG418's nixvim configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-25.11";
     systems.url = "github:nix-systems/default";
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixvim.url = "github:nix-community/nixvim/nixos-26.05";
   };
 
   outputs =

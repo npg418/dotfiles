@@ -8,7 +8,7 @@
     nix-ld.enable = true;
   };
 
-  system.packages = [
+  environment.systemPackages = [
     pkgs.man-pages
     pkgs.man-pages-posix
   ];
