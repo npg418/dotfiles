@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-25.11";
     dotfiles = {
       url = "github:npg418/dotfiles?dir=nixos";
       inputs.nixpkgs.follows = "nixpkgs";
