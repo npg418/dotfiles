@@ -5,14 +5,16 @@
     defaultUser = "nullp";
     wslConf = {
       automount.root = "/mnt";
-      network.generateHosts = false;
+      network = {
+        generateHosts = false;
+        generateResolveConf = false;
+      };
     };
   };
 
   environment = {
     systemPackages = with pkgs; [
       wl-clipboard
-      wslu
     ];
     variables = {
       WSLROOT = "/mnt/c/Users/nullp/";
