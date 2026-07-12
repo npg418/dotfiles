@@ -5,10 +5,7 @@
     defaultUser = "nullp";
     wslConf = {
       automount.root = "/mnt";
-      network = {
-        generateHosts = false;
-        generateResolveConf = false;
-      };
+      network.generateHosts = false;
     };
   };
 
