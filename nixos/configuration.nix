@@ -8,9 +8,10 @@
     nix-ld.enable = true;
   };
 
-  environment.systemPackages = [
-    pkgs.man-pages
-    pkgs.man-pages-posix
+  environment.systemPackages = with pkgs; [
+    man-pages
+    man-pages-posix
+    wget
   ];
 
   documentation.dev.enable = true;
