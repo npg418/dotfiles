@@ -16,6 +16,7 @@
     pay-respects.enable = true;
     # nix-index.enable = true;
     fzf.enable = true;
+    chromium.enable = true;
   };
 
   home.packages = with pkgs; [
