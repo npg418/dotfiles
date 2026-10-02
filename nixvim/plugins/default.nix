@@ -1,7 +1,7 @@
 {
   imports = [
     ./mini
-    ./copilot.nix
+    # ./copilot.nix
     # ./coq.nix
     ./hardtime.nix
     ./treesitter.nix
