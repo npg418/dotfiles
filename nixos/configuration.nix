@@ -1,4 +1,20 @@
 { pkgs, ... }:
+let
+  man-pages-ja = pkgs.stdenvNoCC.mkDerivation {
+    pname = "man-pages-ja";
+    version = "0.5.0.0.20221215";
+    src = pkgs.fetchurl {
+      url = "https://deb.debian.org/debian/pool/main/m/manpages-ja/manpages-ja_0.5.0.0.20221215+dfsg-1_all.deb";
+      hash = "sha256-TScOmh6Dvk3gwHKhEIkqF9ycqktQElcyQAasKNgsV0M=";
+    };
+    nativeBuildInputs = [ pkgs.dpkg ];
+    unpackPhase = "dpkg-deb -x $src .";
+    installPhase = ''
+      mkdir -p $out/share
+      cp -r usr/share/man $out/share/
+    '';
+  };
+in
 {
   i18n.defaultLocale = "ja_JP.UTF-8";
   time.timeZone = "Asia/Tokyo";
@@ -12,6 +28,7 @@
     man-pages
     man-pages-posix
     wget
+    man-pages-ja
   ];
 
   documentation.dev.enable = true;
