@@ -5,7 +5,7 @@
       settings = {
         user = {
           name = "NPG418";
-          email = "narupenguin919@gmail.com";
+          email = "git@npg418.com";
         };
         init = {
           defaultBranch = "main";
